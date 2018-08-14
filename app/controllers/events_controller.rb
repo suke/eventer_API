@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:name)
+      params.require(:event).permit(:name, :operation_company_id)
     end
 
     def error_message(message)

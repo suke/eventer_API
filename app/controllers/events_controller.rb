@@ -1,29 +1,38 @@
 class EventsController < ApplicationController
-  def create
-    event = Event.new(event_params)
-    if event.save
-      # do something
-      render json: event
-    else
-      # do something
-      render json: event.errors.messages
-    end
+
+  def index
+    events = Event.all
+    render json: events
   end
 
   def show
+    event = Event.find_by!(id: params[:id])
+    render json: event
+  end
 
+  def create
+    event = Event.create!(event_params)
+    render json: event
   end
 
   def update
-
+    event = Event.find_by!(id: params[:id])
+    event.update!(event_params)
+    render json: event
   end
 
   def destroy
-
+    event = Event.find_by!(id: params[:id])
+    event.destroy!
+    render json: {success: "Successfully deleted with id = #{params[:id]}"}
   end
 
   private
     def event_params
       params.require(:event).permit(:name)
+    end
+
+    def error_message(message)
+      { error: message }
     end
 end

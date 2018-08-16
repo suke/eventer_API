@@ -24,15 +24,11 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find_by!(id: params[:id])
     event.destroy!
-    render json: {success: "Successfully deleted with id = #{params[:id]}"}
+    render json: success_message('id', params[:id])
   end
 
   private
     def event_params
       params.require(:event).permit(:name, :operation_company_id)
-    end
-
-    def error_message(message)
-      { error: message }
     end
 end

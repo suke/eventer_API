@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotDestroyed do
     render json: { error: 'Failed to destroy' }, status: 422
   end
+
+  protected
+
+  def success_message(key, id)
+    {success: "Successfully deleted with #{key} = #{id}"}
+  end
 end

@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "./db/seeds/companies.rb"
 require "./db/seeds/events.rb"
+require "./db/seeds/categories.rb"

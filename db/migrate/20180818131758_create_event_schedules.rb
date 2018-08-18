@@ -9,4 +9,3 @@ class CreateEventSchedules < ActiveRecord::Migration[5.2]
     end
   end
 end
-åå

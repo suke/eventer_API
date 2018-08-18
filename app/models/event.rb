@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :company
+  has_many :event_schedules
   validates :name, presence: true, length: { maximum: 255 }
   validates :company_id, length: { maximum: 11 }
 end

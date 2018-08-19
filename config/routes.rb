@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :events
   resources :companies
   resources :categories
+  resources :event_schedules
 end

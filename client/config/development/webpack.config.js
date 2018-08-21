@@ -30,6 +30,9 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.join(__dirname, '../../../app/assets/javascripts'),
-    port: 8080
+    port: 8080,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   }
 }

@@ -30,3 +30,4 @@
 /app/assets/javascripts
 
 /client/node_modules
+.env

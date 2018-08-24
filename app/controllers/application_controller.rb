@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # 外部からAPIを叩いた時にcsrfに引っかかる為、一時的に無効にしておく
   protect_from_forgery with: :null_session
+  before_action :set_raven_context
 
   rescue_from ActiveRecord::RecordNotFound do
     render json: { error: 'Record not found' }, status: 404
@@ -18,5 +19,12 @@ class ApplicationController < ActionController::Base
 
   def success_message(key, id)
     {success: "Successfully deleted with #{key} = #{id}"}
+  end
+
+  private
+
+  def set_raven_context
+    logger.debug(Settings.sentry_dns)
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 end

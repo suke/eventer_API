@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -25,9 +26,12 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
+/config/settings/
 !/app/assets/javascripts/.keep
 /app/assets/javascripts
 
 /client/node_modules
-.env
+.env.*
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

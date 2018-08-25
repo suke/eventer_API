@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :company do
+  factory :category do
     sequence(:id) { |n| n }
     sequence(:name) { |n| "Category#{n}" }
     created_at { Time.zone.now }

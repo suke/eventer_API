@@ -17,7 +17,7 @@ class EventSchedulesController < ApplicationController
   def update
     @event_schedule = EventSchedule.find_by!(id: params[:id])
     @event_schedule.update!(event_schedule_params)
-    render json: @event_schedule
+    render json: @event_schedule
   end
 
   def destroy

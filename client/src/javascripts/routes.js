@@ -1,5 +1,5 @@
 import React from 'react'
-import Event from './components/event'
+import Event from './containers/event'
 import Company from './components/company'
 import Category from './components/category'
 

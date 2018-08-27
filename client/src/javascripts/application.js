@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
 import routes from './routes'
 import Sidebar from './components/sidebar'
 import 'ress'
+
+const store = configureStore()
 
 class App extends Component {
   constructor(props) {
@@ -39,4 +43,9 @@ const Wrapper = styled.div`
 `
 
 const target = document.getElementById('app')
-render(<App />, target)
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  target
+)

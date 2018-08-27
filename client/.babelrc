@@ -4,5 +4,10 @@
         "development": {
           "presets": ["react-hmre"]
         }
-    }
+    },
+    "plugins": [
+        ["transform-runtime", {
+            "regenerator": true
+        }]
+    ]
 }

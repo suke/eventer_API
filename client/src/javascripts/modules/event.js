@@ -15,7 +15,7 @@ const initialState = {
 
 export default function eventReducer(state = initialState, action) {
   switch (action.type) {
-    case 'SUCCESS_GET_EVENTS':
+    case SUCCESS_GET_EVENTS:
       return { data: [...action.data] }
     default:
       return state

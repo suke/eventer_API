@@ -1,7 +1,7 @@
-import Api from '../base'
+import API from '../base'
 
-export function getEvents() {
-  return Api.get('/events')
+export function fetchEvents() {
+  return API.get('/events')
     .then(result => ({ result }))
     .catch(err => ({ err }))
 }

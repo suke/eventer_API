@@ -1,12 +1,14 @@
 // action tyoe
-export const GET_EVENTS = 'GET_EVENTS'
-export const SUCCESS_GET_EVENTS = 'SUCCESS_GET_EVENTS'
+export const FETCH_EVENTS = 'FETCH_EVENTS'
+export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS'
 
 // action creators
-export const getEvents = () => ({ type: GET_EVENTS })
-export const successGetEvents = data => ({
-  type: SUCCESS_GET_EVENTS,
-  data
+export const fetchEvents = () => ({ type: FETCH_EVENTS })
+export const fetchEventsSuccess = data => ({
+  type: FETCH_EVENTS_SUCCESS,
+  payload: {
+    data
+  }
 })
 
 const initialState = {
@@ -15,8 +17,8 @@ const initialState = {
 
 export default function eventReducer(state = initialState, action) {
   switch (action.type) {
-    case SUCCESS_GET_EVENTS:
-      return { data: [...action.data] }
+    case FETCH_EVENTS_SUCCESS:
+      return { data: [...action.payload.data] }
     default:
       return state
   }

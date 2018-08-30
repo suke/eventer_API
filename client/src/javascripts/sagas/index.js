@@ -1,18 +1,17 @@
 import { put, call, take, fork } from 'redux-saga/effects'
 import API from '../api'
-import { GET_EVENTS, successGetEvents } from '../modules/event'
+import { FETCH_EVENTS, fetchEventsSuccess } from '../modules/Event'
 
-function* getEvents() {
+function* fetchEvents() {
   while (true) {
-    const action = yield take(GET_EVENTS)
-    console.log('success')
-    const { result, err } = yield call(API.event.getEvents)
+    const action = yield take(FETCH_EVENTS)
+    const { result, err } = yield call(API.event.fetchEvents)
     if (result && !err) {
-      yield put(successGetEvents(result.data))
+      yield put(fetchEventsSuccess(result.data))
     }
   }
 }
 
 export default function* rootSaga() {
-  yield fork(getEvents)
+  yield fork(fetchEvents)
 }

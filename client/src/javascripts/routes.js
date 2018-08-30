@@ -1,24 +1,34 @@
 import React from 'react'
-import Event from './containers/event'
-import Company from './components/company'
-import Category from './components/category'
+import EventList from './containers/event_list_container'
+import Event from './containers/event_container'
+import CompanyList from './components/company_list'
+import CategoryList from './components/category_list'
 
 const routes = [
   {
-    name: 'event',
-    path: '/',
+    path: '/event',
     exact: true,
-    main: () => <Event />
+    component: () => <EventList />
   },
   {
-    name: 'company',
-    path: '/company',
-    main: () => <Company />
+    path: '/events',
+    exact: true,
+    component: () => <EventList />
   },
   {
-    name: 'category',
-    path: '/category',
-    main: () => <Category />
+    path: '/events/:id',
+    exact: true,
+    component: () => <Event />
+  },
+  {
+    path: '/companies',
+    exact: true,
+    component: () => <CompanyList />
+  },
+  {
+    path: '/categories',
+    exact: true,
+    component: () => <CategoryList />
   }
 ]
 

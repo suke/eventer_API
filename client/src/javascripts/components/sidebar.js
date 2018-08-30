@@ -1,20 +1,37 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import routes from '../routes'
+
+const items = [
+  {
+    name: 'event',
+    path: '/event'
+  },
+  {
+    name: 'events',
+    path: '/events'
+  },
+  {
+    name: 'company',
+    path: '/companies'
+  },
+  {
+    name: 'category',
+    path: '/categories'
+  }
+]
 
 const Sidebar = ({ className }) => (
   <SidebarWrapper className={className}>
     <ul>
-      {routes.map((route, index) => (
-        <ListItem key={index}>
-          <StyledLink to={route.path}>{route.name}</StyledLink>
-        </ListItem>
-      ))}
+      {items.map(item => {
+        return (
+          <ListItem>
+            <StyledLink to={item.path}>{item.name}</StyledLink>
+          </ListItem>
+        )
+      })}
     </ul>
-    {routes.map((route, index) => (
-      <Route key={index} path={route.path} exact={route.exact} />
-    ))}
   </SidebarWrapper>
 )
 

@@ -1,7 +1,34 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Route, Link, Switch } from 'react-router-dom'
-import Event from './event'
+import { Link } from 'react-router-dom'
+import ReactTable from 'react-table'
+
+const columns = [
+  {
+    Header: 'ID',
+    accessor: 'id'
+  },
+  {
+    Header: 'Name',
+    accessor: 'name'
+  },
+  {
+    Header: 'Created_at',
+    accessor: 'created_at'
+  },
+  {
+    Header: 'Updated_at',
+    accessor: 'updated_at'
+  },
+  {
+    Header: 'Edit',
+    Cell: ({ original: event }) => (
+      <EditButton width="60px" height="30px">
+        <StyledLink to={`/events/${event.id}`}>Edit</StyledLink>
+      </EditButton>
+    )
+  }
+]
 
 class EventList extends Component {
   constructor(props) {
@@ -9,8 +36,8 @@ class EventList extends Component {
   }
 
   componentDidMount() {
-    const { getEvents } = this.props
-    getEvents()
+    const { fetchEvents } = this.props
+    fetchEvents()
   }
 
   render() {
@@ -18,13 +45,12 @@ class EventList extends Component {
     return (
       <EventWrapper>
         <H2>イベント一覧</H2>
-        <ul>
-          {events.map(event => (
-            <ItemList key={event.id}>
-              <Link to={`/events/${event.id}`}>{event.name}</Link>
-            </ItemList>
-          ))}
-        </ul>
+        <ReactTable
+          data={events}
+          columns={columns}
+          defaultPageSize={10}
+          className="-striped -highlight"
+        />
       </EventWrapper>
     )
   }
@@ -43,8 +69,21 @@ const EventWrapper = styled.div`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px 0px;
 `
-const ItemList = styled.li`
-  margin-bottom: 10px;
+const StyledLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  color: white;
+`
+
+const Button = styled.button`
+  display: block;
+  width: ${props => props.width};
+  height: ${props => props.height};
+`
+
+const EditButton = styled(Button)`
+  margin: 0 auto;
+  background: #666;
 `
 
 export default EventList

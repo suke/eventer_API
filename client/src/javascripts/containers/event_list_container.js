@@ -4,7 +4,7 @@ import EventList from '../components/event_list'
 
 const mapStateToProps = state => {
   return {
-    events: state.eventReducer.data
+    events: state.eventReducer.events
   }
 }
 

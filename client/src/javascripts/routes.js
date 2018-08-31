@@ -16,9 +16,14 @@ const routes = [
     component: () => <EventList />
   },
   {
+    path: '/events/:id/show',
+    exact: true,
+    component: props => <Event {...props} />
+  },
+  {
     path: '/events/:id',
     exact: true,
-    component: () => <Event />
+    component: props => <Event {...props} />
   },
   {
     path: '/companies',

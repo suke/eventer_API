@@ -487,6 +487,9 @@ const baseStyle = className => injectGlobal`
     color: #222526;
     text-decoration: none;
   }
+  * {
+    outline: none
+  }
 `
 
 export default baseStyle

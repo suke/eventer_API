@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import routes from './routes'

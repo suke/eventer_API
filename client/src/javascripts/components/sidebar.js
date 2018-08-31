@@ -24,9 +24,9 @@ const items = [
 const Sidebar = ({ className }) => (
   <SidebarWrapper className={className}>
     <ul>
-      {items.map(item => {
+      {items.map((item, idx) => {
         return (
-          <ListItem>
+          <ListItem key={idx}>
             <StyledLink to={item.path}>{item.name}</StyledLink>
           </ListItem>
         )

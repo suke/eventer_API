@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :companies
   resources :categories
   resources :event_schedules
+  get '/event/schedules/:id' => 'event_schedules#schedules'
 end

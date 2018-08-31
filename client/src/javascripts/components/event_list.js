@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import ReactTable from 'react-table'
+import moment from 'moment'
+import Wrapper from './main_wrapper_base'
+import EditButton from './button/edit_button'
+import Link from './edit_button_link'
 
 const columns = [
   {
@@ -14,27 +17,33 @@ const columns = [
   },
   {
     Header: 'Created_at',
-    accessor: 'created_at'
+    id: 'created_at',
+    accessor: event => moment(event.created_at).format('YYYY-MM-DD h:mm:ss')
   },
   {
     Header: 'Updated_at',
-    accessor: 'updated_at'
+    id: 'updated_at',
+    accessor: event => moment(event.updated_at).format('YYYY-MM-DD h:mm:ss')
+  },
+  {
+    Header: 'Show',
+    Cell: ({ original: event }) => (
+      <EditButton width="60px" height="30px">
+        <Link to={`/events/${event.id}/show`}>Show</Link>
+      </EditButton>
+    )
   },
   {
     Header: 'Edit',
     Cell: ({ original: event }) => (
       <EditButton width="60px" height="30px">
-        <StyledLink to={`/events/${event.id}`}>Edit</StyledLink>
+        <Link to={`/events/${event.id}`}>Edit</Link>
       </EditButton>
     )
   }
 ]
 
 class EventList extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     const { fetchEvents } = this.props
     fetchEvents()
@@ -43,47 +52,21 @@ class EventList extends Component {
   render() {
     const { events } = this.props
     return (
-      <EventWrapper>
+      <Wrapper>
         <H2>イベント一覧</H2>
         <ReactTable
           data={events}
           columns={columns}
-          defaultPageSize={10}
+          defaultPageSize={20}
           className="-striped -highlight"
         />
-      </EventWrapper>
+      </Wrapper>
     )
   }
 }
 
 const H2 = styled.h2`
   margin-bottom: 10px;
-`
-
-const EventWrapper = styled.div`
-  grid-area: content;
-  width: calc(100% - 30%);
-  background: white;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px 0px;
-`
-const StyledLink = styled(Link)`
-  width: 100%;
-  height: 100%;
-  color: white;
-`
-
-const Button = styled.button`
-  display: block;
-  width: ${props => props.width};
-  height: ${props => props.height};
-`
-
-const EditButton = styled(Button)`
-  margin: 0 auto;
-  background: #666;
 `
 
 export default EventList

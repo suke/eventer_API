@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
 import moment from 'moment'
-import Wrapper from './main_wrapper_base'
-import EditButton from './button/edit_button'
-import Link from './edit_button_link'
+import Wrapper from '../main_wrapper_base'
+import { EditButton } from '../button'
+import Link from '../edit_button_link'
 
 const columns = [
   {
@@ -42,7 +42,9 @@ const columns = [
     Header: 'Edit',
     Cell: ({ original: schedule }) => (
       <EditButton width="60px" height="30px">
-        <Link to={`/events_schedules/${schedule.id}`}>Edit</Link>
+        <Link to={`/events_schedules/${schedule.id}`} height="30px">
+          Edit
+        </Link>
       </EditButton>
     )
   }
@@ -56,7 +58,6 @@ class Event extends Component {
 
   render() {
     const { events, match, schedules } = this.props
-    console.log(schedules)
     const event = events.find(event => {
       return event.id === parseInt(match.params.id)
     })

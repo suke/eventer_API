@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { fetchEventSchedule } from '../modules/event'
-import Event from '../components/event'
+import { fetchEventSchedule } from '../../modules/event'
+import Event from '../../components/event/index'
 
 const mapStateToProps = state => {
   return {

@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   display: block;
-  width: ${props => props.width};
+  min-width: ${props => props.width};
   height: ${props => props.height};
+  background: ${props => props.background};
 `
 
 export const EditButton = styled(Button)`

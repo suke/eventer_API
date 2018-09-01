@@ -1,15 +1,11 @@
 import React from 'react'
-import EventList from './containers/event_list_container'
-import Event from './containers/event_container'
-import CompanyList from './components/company_list'
-import CategoryList from './components/category_list'
+import EventList from '../containers/event/event_list_container'
+import Event from '../containers/event/event_container'
+import EventCreate from '../containers/event/event_create_container'
+import CompanyList from '../components/company_list'
+import CategoryList from '../components/category_list'
 
 const routes = [
-  {
-    path: '/event',
-    exact: true,
-    component: () => <EventList />
-  },
   {
     path: '/events',
     exact: true,
@@ -21,7 +17,12 @@ const routes = [
     component: props => <Event {...props} />
   },
   {
-    path: '/events/:id',
+    path: '/events/create',
+    exact: true,
+    component: () => <EventCreate />
+  },
+  {
+    path: '/events/:id/edit',
     exact: true,
     component: props => <Event {...props} />
   },

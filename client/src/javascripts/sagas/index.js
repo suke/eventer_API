@@ -5,7 +5,8 @@ import {
   FETCH_EVENT_SCHEDULE,
   fetchEventScheduleSuccess,
   fetchEventsSuccess
-} from '../modules/Event'
+} from '../modules/event'
+import { FETCH_COMPANIES, fetchCompaniesSuccess } from '../modules/company'
 
 function* fetchEvents() {
   while (true) {
@@ -30,7 +31,18 @@ function* fetchEventSchedule() {
   }
 }
 
+function* fetchCompanies() {
+  while (true) {
+    yield take(FETCH_COMPANIES)
+    const { result, err } = yield call(API.company.fetchCompanies)
+    if (result && !err) {
+      yield put(fetchCompaniesSuccess(result.data))
+    }
+  }
+}
+
 export default function* rootSaga() {
   yield fork(fetchEvents)
   yield fork(fetchEventSchedule)
+  yield fork(fetchCompanies)
 }

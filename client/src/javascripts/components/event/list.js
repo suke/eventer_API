@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
 import moment from 'moment'
-import Wrapper from './main_wrapper_base'
-import EditButton from './button/edit_button'
-import Link from './edit_button_link'
+import Wrapper from '../main_wrapper_base'
+import Button, { EditButton } from '../button'
+import ButtonLink from '../edit_button_link'
 
 const columns = [
   {
@@ -29,7 +29,9 @@ const columns = [
     Header: 'Show',
     Cell: ({ original: event }) => (
       <EditButton width="60px" height="30px">
-        <Link to={`/events/${event.id}/show`}>Show</Link>
+        <ButtonLink to={`/events/${event.id}/show`} height="30px">
+          Show
+        </ButtonLink>
       </EditButton>
     )
   },
@@ -37,7 +39,9 @@ const columns = [
     Header: 'Edit',
     Cell: ({ original: event }) => (
       <EditButton width="60px" height="30px">
-        <Link to={`/events/${event.id}`}>Edit</Link>
+        <ButtonLink to={`/events/${event.id}/edit`} height="30px">
+          Edit
+        </ButtonLink>
       </EditButton>
     )
   }
@@ -53,7 +57,14 @@ class EventList extends Component {
     const { events } = this.props
     return (
       <Wrapper>
-        <H2>イベント一覧</H2>
+        <Header>
+          <H2>イベント一覧</H2>
+          <CreateButton width="60px" height="30px" background="#666">
+            <ButtonLink to={`/events/create`} height="30px">
+              Create
+            </ButtonLink>
+          </CreateButton>
+        </Header>
         <ReactTable
           data={events}
           columns={columns}
@@ -67,6 +78,15 @@ class EventList extends Component {
 
 const H2 = styled.h2`
   margin-bottom: 10px;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const CreateButton = styled(Button)`
+  margin-right: 40px;
 `
 
 export default EventList

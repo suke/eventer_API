@@ -22,9 +22,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    event = Event.find_by!(id: params[:id])
+    id = params[:id].to_i
+    event = Event.find_by!(id: id)
     event.destroy!
-    render json: success_message('id', params[:id])
+    render json: {id: id, message: success_message('id', id)}
   end
 
   private

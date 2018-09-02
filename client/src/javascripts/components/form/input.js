@@ -37,7 +37,7 @@ const FormContainer = styled.div`
 `
 const Label = styled.label`
   display: inline-block;
-  min-width: 150px;
+  min-width: 200px;
   padding: 10px;
   margin-right: 10px;
   font-weight: bold;
@@ -45,13 +45,13 @@ const Label = styled.label`
 `
 
 const Select = styled.select`
-  min-width: 300px;
+  min-width: 400px;
   padding: 5px;
   border: 1px solid #ccc;
 `
 
 const Input = styled.input`
-  min-width: 300px;
+  min-width: 400px;
   padding: 5px;
   border: 1px solid #ccc;
 `

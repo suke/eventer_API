@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchEvents } from '../../modules/event'
+import { fetchEvents, deleteEvent } from '../../modules/event'
 import EventList from '../../components/event/list'
 
 const mapStateToProps = state => {
@@ -10,7 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToPros = dispatch => {
   return {
-    fetchEvents: () => dispatch(fetchEvents())
+    fetchEvents: () => dispatch(fetchEvents()),
+    onClickDelete: id => dispatch(deleteEvent(id))
   }
 }
 

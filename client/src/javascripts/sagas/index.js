@@ -1,16 +1,58 @@
 import { put, call, take, fork } from 'redux-saga/effects'
 import API from '../api'
 import {
+  CREATE_EVENT,
+  UPDATE_EVENT,
+  DELETE_EVENT,
   FETCH_EVENTS,
   FETCH_EVENT_SCHEDULE,
+  createEventSuccess,
+  updateEventSuccess,
+  deleteEventSuccess,
   fetchEventScheduleSuccess,
   fetchEventsSuccess
 } from '../modules/event'
 import { FETCH_COMPANIES, fetchCompaniesSuccess } from '../modules/company'
 
+function* createEvent() {
+  while (true) {
+    const action = yield take(CREATE_EVENT)
+    const { result, err } = yield call(
+      API.event.createEvent,
+      action.payload.data
+    )
+    if (result && !err) {
+      yield put(createEventSuccess(result.data))
+    }
+  }
+}
+
+function* updateEvent() {
+  while (true) {
+    const action = yield take(UPDATE_EVENT)
+    const { result, err } = yield call(
+      API.event.updateEvent,
+      action.payload.data
+    )
+    if (result && !err) {
+      yield put(updateEventSuccess(result.data))
+    }
+  }
+}
+
+function* deleteEvent() {
+  while (true) {
+    const action = yield take(DELETE_EVENT)
+    const { result, err } = yield call(API.event.deleteEvent, action.payload.id)
+    if (result && !err) {
+      yield put(deleteEventSuccess(result.data))
+    }
+  }
+}
+
 function* fetchEvents() {
   while (true) {
-    const action = yield take(FETCH_EVENTS)
+    yield take(FETCH_EVENTS)
     const { result, err } = yield call(API.event.fetchEvents)
     if (result && !err) {
       yield put(fetchEventsSuccess(result.data))
@@ -42,6 +84,9 @@ function* fetchCompanies() {
 }
 
 export default function* rootSaga() {
+  yield fork(createEvent)
+  yield fork(updateEvent)
+  yield fork(deleteEvent)
   yield fork(fetchEvents)
   yield fork(fetchEventSchedule)
   yield fork(fetchCompanies)

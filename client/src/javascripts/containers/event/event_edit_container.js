@@ -1,19 +1,22 @@
 import { connect } from 'react-redux'
-import { createEvent } from '../../modules/event'
+import { currentEvent, updateEvent } from '../../modules/event'
 import { fetchCompanies } from '../../modules/company'
-import EventCreate from '../../components/event/create'
+import EventEdit from '../../components/event/edit'
 
 const mapStateToProps = state => {
   return {
+    event: state.eventReducer.currentEvent,
+    events: state.eventReducer.events,
     companies: state.companyReducer.companies
   }
 }
 
 const mapDispatchToPros = dispatch => {
   return {
+    currentEvent: data => dispatch(currentEvent(data)),
     fetchCompanies: () => dispatch(fetchCompanies()),
     handleSubmit: data => {
-      dispatch(createEvent(data))
+      dispatch(updateEvent(data))
     }
   }
 }
@@ -21,4 +24,4 @@ const mapDispatchToPros = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToPros
-)(EventCreate)
+)(EventEdit)

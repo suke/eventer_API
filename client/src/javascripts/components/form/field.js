@@ -22,7 +22,10 @@ export const SelectField = ({
   <FormContainer>
     <Label>{label}</Label>
     <Select {...input}>
-      <option value="">Select a company...</option>
+      <option value="">
+        Select a {label}
+        ...
+      </option>
       {options.map(option => (
         <option value={option.value} key={option.value}>
           {option.name}

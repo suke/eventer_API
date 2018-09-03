@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Form from '../form/event'
-import Wrapper from '../main_wrapper_base'
+import Form from '../../containers/event/form'
+import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 
 class EventCreate extends Component {

@@ -2,61 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
 import moment from 'moment'
-import Wrapper from '../main_wrapper_base'
+import Wrapper from '../main_wrapper'
 import Button, { EditButton } from '../button'
 import ButtonLink from '../edit_button_link'
-
-const columns = [
-  {
-    Header: 'ID',
-    accessor: 'id'
-  },
-  {
-    Header: 'Name',
-    accessor: 'name'
-  },
-  {
-    Header: 'Created_at',
-    id: 'created_at',
-    accessor: event => moment(event.created_at).format('YYYY-MM-DD h:mm:ss')
-  },
-  {
-    Header: 'Updated_at',
-    id: 'updated_at',
-    accessor: event => moment(event.updated_at).format('YYYY-MM-DD h:mm:ss')
-  },
-  {
-    Header: 'Show',
-    Cell: ({ original: event }) => (
-      <EditButton width="60px" height="30px" borderColoer="#666">
-        <ButtonLink to={`/events/${event.id}/show`} height="26px">
-          Show
-        </ButtonLink>
-      </EditButton>
-    )
-  },
-  {
-    Header: 'Edit',
-    Cell: ({ original: event }) => (
-      <EditButton width="60px" height="30px" borderColoer="#666">
-        <ButtonLink to={`/events/${event.id}/edit`} height="26px">
-          Edit
-        </ButtonLink>
-      </EditButton>
-    )
-  },
-  {
-    Header: 'Delete',
-    Cell: ({ original: event, ...props }) => {
-      console.log(props)
-      return (
-        <EditButton width="60px" height="30px" borderColoer="#666">
-          Delete
-        </EditButton>
-      )
-    }
-  }
-]
 
 class EventList extends Component {
   componentDidMount() {
@@ -121,7 +69,7 @@ class EventList extends Component {
             },
             {
               Header: 'Delete',
-              Cell: ({ original: event, ...props }) => {
+              Cell: ({ original: event }) => {
                 return (
                   <EditButton
                     width="60px"

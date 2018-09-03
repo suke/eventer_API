@@ -2,53 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
 import moment from 'moment'
-import Wrapper from '../main_wrapper_base'
+import Wrapper from '../main_wrapper'
 import { EditButton } from '../button'
 import Link from '../edit_button_link'
-
-const columns = [
-  {
-    Header: 'ID',
-    accessor: 'id'
-  },
-  {
-    Header: 'Started_at',
-    id: 'started_at',
-    accessor: schedule =>
-      moment(schedule.started_at).format('YYYY-MM-DD h:mm:ss')
-  },
-  {
-    Header: 'Ended_at',
-    id: 'ended_at',
-    accessor: schedule => moment(schedule.ended_at).format('YYYY-MM-DD h:mm:ss')
-  },
-  {
-    Header: 'Created_at',
-    id: 'created_at',
-    accessor: schedule =>
-      moment(schedule.created_at).format('YYYY-MM-DD h:mm:ss')
-  },
-  {
-    Header: 'Updated_at',
-    id: 'updated_at',
-    accessor: schedule =>
-      moment(schedule.updated_at).format('YYYY-MM-DD h:mm:ss')
-  },
-  {
-    Header: 'Address',
-    accessor: 'address'
-  },
-  {
-    Header: 'Edit',
-    Cell: ({ original: schedule }) => (
-      <EditButton width="60px" height="30px">
-        <Link to={`/events_schedules/${schedule.id}`} height="30px">
-          Edit
-        </Link>
-      </EditButton>
-    )
-  }
-]
 
 class Event extends Component {
   componentDidMount() {
@@ -67,7 +23,50 @@ class Event extends Component {
         <H3>スケジュール一覧</H3>
         <ReactTable
           data={schedules}
-          columns={columns}
+          columns={[
+            {
+              Header: 'ID',
+              accessor: 'id'
+            },
+            {
+              Header: 'Started_at',
+              id: 'started_at',
+              accessor: schedule =>
+                moment(schedule.started_at).format('YYYY-MM-DD h:mm:ss')
+            },
+            {
+              Header: 'Ended_at',
+              id: 'ended_at',
+              accessor: schedule =>
+                moment(schedule.ended_at).format('YYYY-MM-DD h:mm:ss')
+            },
+            {
+              Header: 'Created_at',
+              id: 'created_at',
+              accessor: schedule =>
+                moment(schedule.created_at).format('YYYY-MM-DD h:mm:ss')
+            },
+            {
+              Header: 'Updated_at',
+              id: 'updated_at',
+              accessor: schedule =>
+                moment(schedule.updated_at).format('YYYY-MM-DD h:mm:ss')
+            },
+            {
+              Header: 'Address',
+              accessor: 'address'
+            },
+            {
+              Header: 'Edit',
+              Cell: ({ original: schedule }) => (
+                <EditButton width="60px" height="30px">
+                  <Link to={`/events_schedules/${schedule.id}`} height="30px">
+                    Edit
+                  </Link>
+                </EditButton>
+              )
+            }
+          ]}
           defaultPageSize={20}
           className="-striped -highlight"
         />

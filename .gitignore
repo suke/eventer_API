@@ -30,6 +30,7 @@
 !/app/assets/javascripts/.keep
 /app/assets/javascripts
 
+.vscode
 /client/node_modules
 .env.*
 config/settings.local.yml

@@ -7,7 +7,7 @@ import Sidebar from './sidebar'
 const App = () => (
   <Router>
     <Wrapper>
-      <Sidebar />
+      <StyledSidebar />
       <MainContainer>
         {routes.map((route, index) => (
           <Route
@@ -27,8 +27,12 @@ const Wrapper = styled.div`
   grid-template-columns: 200px 1fr;
   grid-template-areas: 'sidebar content';
 `
+const StyledSidebar = styled(Sidebar)`
+  grid-area: sidebar;
+`
 
 const MainContainer = styled.div`
+  grid-area: content;
   background: #f4f7f8;
   padding: 20px;
 `

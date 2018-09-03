@@ -36,7 +36,6 @@ const Sidebar = ({ className }) => (
 )
 
 const SidebarWrapper = styled.div`
-  grid-area: 'sidebar';
   height: 100vh;
   padding: 20px 0;
 `

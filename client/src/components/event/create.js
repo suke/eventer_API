@@ -11,12 +11,12 @@ class EventCreate extends Component {
   }
 
   render() {
-    const { companies } = this.props
+    const { companies, handleSubmit } = this.props
     const options = createOptions(companies, 'id', 'name')
     return (
       <Wrapper>
         <H2>イベント作成</H2>
-        <Form options={options} onSubmit={this.props.handleSubmit} />
+        <Form options={options} onSubmit={handleSubmit} />
       </Wrapper>
     )
   }

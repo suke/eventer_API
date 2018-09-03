@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
-    application: './src/javascripts/application.js'
+    application: './src/application.js'
   },
   output: {
     path: path.join(__dirname, '../../../app/assets/javascripts'),

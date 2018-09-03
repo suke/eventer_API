@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   mode: 'production',
   entry: {
-    application: './src/javascripts/application.js'
+    application: './src/application.js'
   },
   output: {
     path: path.join(__dirname, '../../../app/assets/javascripts'),

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { EditForm } from '../../containers/event/form'
+import { EditForm } from '../../containers/event/form_container'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 

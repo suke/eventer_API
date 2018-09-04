@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify'
+
 // action tyoe
 export const CREATE_EVENT = 'CREATE_EVENT'
 export const CREATE_EVENT_SUCCESS = 'CREATE_EVENT_SUCCESS'
@@ -97,8 +99,10 @@ export default function eventReducer(state = initialState, action) {
     case CURRENT_EVENT:
       return { ...state, currentEvent: { ...action.payload.data } }
     case CREATE_EVENT_SUCCESS:
+      toast.success('Created an event')
       return { ...state, events: [...state.events, action.payload.data] }
     case UPDATE_EVENT_SUCCESS:
+      toast.success('Update completed')
       const updateIndex = state.events.findIndex(event => {
         return event.id === action.payload.data.id
       })
@@ -106,6 +110,7 @@ export default function eventReducer(state = initialState, action) {
       newEvents.splice(updateIndex, 1, action.payload.data)
       return { ...state, currentEvent: action.payload.data, events: newEvents }
     case DELETE_EVENT_SUCCESS:
+      toast.success(`${action.payload.data.message}`)
       return {
         ...state,
         events: [...state.events].filter(event => {

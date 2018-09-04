@@ -1,14 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import Wrapper from '../main_wrapper'
 
 const CompanyList = () => (
-  <CompanyWrapper>
+  <Wrapper>
     <h2>Company</h2>
-  </CompanyWrapper>
+  </Wrapper>
 )
-
-const CompanyWrapper = styled.div`
-  grid-area: content;
-`
 
 export default CompanyList

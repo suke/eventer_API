@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def success_message(key, id)
-    {success: "Successfully deleted with #{key} = #{id}"}
+    "Successfully deleted with #{key} = #{id}"
   end
 
   private

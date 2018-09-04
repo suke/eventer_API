@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
+import { ToastContainer } from 'react-toastify'
 import routes from '../config/routes'
 import Sidebar from './sidebar'
 
@@ -18,6 +19,7 @@ const App = () => (
           />
         ))}
       </MainContainer>
+      <ToastContainer autoClose={2000} />
     </Wrapper>
   </Router>
 )

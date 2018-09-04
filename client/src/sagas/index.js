@@ -1,4 +1,6 @@
 import { put, call, take, fork } from 'redux-saga/effects'
+import { toast } from 'react-toastify'
+import history from '../history'
 import API from '../api'
 import {
   CREATE_EVENT,
@@ -23,6 +25,7 @@ function* createEvent() {
     )
     if (result && !err) {
       yield put(createEventSuccess(result.data))
+      toast.success('Created an event')
     }
   }
 }
@@ -36,6 +39,7 @@ function* updateEvent() {
     )
     if (result && !err) {
       yield put(updateEventSuccess(result.data))
+      toast.success('Update completed')
     }
   }
 }
@@ -46,6 +50,7 @@ function* deleteEvent() {
     const { result, err } = yield call(API.event.deleteEvent, action.payload.id)
     if (result && !err) {
       yield put(deleteEventSuccess(result.data))
+      toast.success(`${result.data.message}`)
     }
   }
 }

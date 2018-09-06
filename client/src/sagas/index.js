@@ -26,6 +26,7 @@ function* createEvent() {
     if (result && !err) {
       yield put(createEventSuccess(result.data))
       toast.success('Created an event')
+      yield call(action.payload.history.push, '/events')
     }
   }
 }
@@ -40,6 +41,7 @@ function* updateEvent() {
     if (result && !err) {
       yield put(updateEventSuccess(result.data))
       toast.success('Update completed')
+      yield call(action.payload.history.push, '/events')
     }
   }
 }

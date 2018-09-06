@@ -3,11 +3,11 @@ import { currentEvent, updateEvent } from '../../modules/event'
 import { fetchCompanies } from '../../modules/company'
 import EventEdit from '../../components/event/edit'
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ eventReducer, companyReducer }) => {
   return {
-    event: state.eventReducer.currentEvent,
-    events: state.eventReducer.events,
-    companies: state.companyReducer.companies
+    event: eventReducer.currentEvent,
+    events: eventReducer.events,
+    companies: companyReducer.companies
   }
 }
 
@@ -15,8 +15,8 @@ const mapDispatchToPros = dispatch => {
   return {
     currentEvent: data => dispatch(currentEvent(data)),
     fetchCompanies: () => dispatch(fetchCompanies()),
-    handleSubmit: data => {
-      dispatch(updateEvent(data))
+    handleSubmit: (data, dispatch, { history }) => {
+      dispatch(updateEvent({ data, history }))
     }
   }
 }

@@ -15,11 +15,11 @@ class EventCreate extends Component {
   }
 
   render() {
-    const { companies, handleSubmit } = this.props
+    const { companies, handleSubmit, history } = this.props
     const options = createOptions(companies, 'id', 'name')
     return (
       <Wrapper>
-        <EditForm options={options} onSubmit={handleSubmit} />
+        <EditForm history={history} options={options} onSubmit={handleSubmit} />
       </Wrapper>
     )
   }

@@ -20,7 +20,7 @@ const routes = [
   {
     path: '/events/create',
     exact: true,
-    component: () => <EventCreate />
+    component: props => <EventCreate {...props} />
   },
   {
     path: '/events/:id/edit',

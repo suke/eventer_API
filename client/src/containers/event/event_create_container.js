@@ -12,8 +12,8 @@ const mapStateToProps = state => {
 const mapDispatchToPros = dispatch => {
   return {
     fetchCompanies: () => dispatch(fetchCompanies()),
-    handleSubmit: data => {
-      dispatch(createEvent(data))
+    handleSubmit: (data, dispatch, { history }) => {
+      dispatch(createEvent({ data, history }))
     }
   }
 }

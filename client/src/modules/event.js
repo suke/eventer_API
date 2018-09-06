@@ -17,10 +17,11 @@ export const FETCH_EVENT_SCHEDULE = 'FETCH_EVENT_SCHEDULE'
 export const FETCH_EVENT_SCHEDULE_SUCCESS = 'FETCH_EVENT_SCHEDULE_SUCCESS'
 
 // action creators
-export const createEvent = data => ({
+export const createEvent = ({ data, history }) => ({
   type: CREATE_EVENT,
   payload: {
-    data
+    data,
+    history
   }
 })
 
@@ -31,10 +32,11 @@ export const createEventSuccess = data => ({
   }
 })
 
-export const updateEvent = data => ({
+export const updateEvent = ({ data, history }) => ({
   type: UPDATE_EVENT,
   payload: {
-    data
+    data,
+    history
   }
 })
 

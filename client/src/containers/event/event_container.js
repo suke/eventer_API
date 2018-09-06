@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 import { fetchEventSchedule } from '../../modules/event'
 import Event from '../../components/event/index'
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ eventReducer }) => {
   return {
-    events: state.eventReducer.events,
-    schedules: state.eventReducer.schedules
+    events: eventReducer.events,
+    schedules: eventReducer.schedules
   }
 }
 

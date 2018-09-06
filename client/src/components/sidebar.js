@@ -4,12 +4,8 @@ import styled from 'styled-components'
 
 const items = [
   {
-    name: 'event',
-    path: '/event'
-  },
-  {
     name: 'events',
-    path: '/events'
+    path: '/'
   },
   {
     name: 'company',

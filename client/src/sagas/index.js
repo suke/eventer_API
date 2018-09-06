@@ -1,6 +1,5 @@
 import { put, call, take, fork } from 'redux-saga/effects'
 import { toast } from 'react-toastify'
-import history from '../history'
 import API from '../api'
 import {
   CREATE_EVENT,
@@ -26,7 +25,7 @@ function* createEvent() {
     if (result && !err) {
       yield put(createEventSuccess(result.data))
       toast.success('Created an event')
-      yield call(action.payload.history.push, '/events')
+      yield call(action.payload.history.push, '/')
     }
   }
 }
@@ -41,7 +40,7 @@ function* updateEvent() {
     if (result && !err) {
       yield put(updateEventSuccess(result.data))
       toast.success('Update completed')
-      yield call(action.payload.history.push, '/events')
+      yield call(action.payload.history.push, '/')
     }
   }
 }

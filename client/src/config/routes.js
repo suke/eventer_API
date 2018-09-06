@@ -8,7 +8,7 @@ import CategoryList from '../components/category/list'
 
 const routes = [
   {
-    path: '/events',
+    path: '/',
     exact: true,
     component: () => <EventList />
   },

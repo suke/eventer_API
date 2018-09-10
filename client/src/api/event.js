@@ -9,7 +9,7 @@ export function createEvent(data) {
     .catch(err => ({ err }))
 }
 
-export function updateEvent({ id, ...data }) {
+export function updateEvent({ id, data }) {
   return API.put(`/events/${id}`, {
     name: data.name,
     company_id: data.company_id

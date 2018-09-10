@@ -1,18 +1,18 @@
 import API from './base'
 
-export function createEvent(data) {
+export function createEvent({ name, company_id }) {
   return API.post('/events', {
-    name: data.name,
-    company_id: data.company_id
+    name,
+    company_id
   })
     .then(result => ({ result }))
     .catch(err => ({ err }))
 }
 
-export function updateEvent({ id, data }) {
+export function updateEvent({ id, name, company_id }) {
   return API.put(`/events/${id}`, {
-    name: data.name,
-    company_id: data.company_id
+    name,
+    company_id
   })
     .then(result => ({ result }))
     .catch(err => ({ err }))

@@ -1,4 +1,4 @@
-import API from '../base'
+import API from './base'
 
 export function createEvent(data) {
   return API.post('/events', {

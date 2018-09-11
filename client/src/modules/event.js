@@ -1,4 +1,4 @@
-// action tyoe
+// action type
 export const CREATE_EVENT = 'CREATE_EVENT'
 export const CREATE_EVENT_SUCCESS = 'CREATE_EVENT_SUCCESS'
 

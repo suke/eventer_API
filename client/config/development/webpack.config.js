@@ -10,11 +10,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../../../app/assets/javascripts'),
     filename: '[name].js',
-    publicPath: 'http://localhost:8080/'
+    publicPath: 'http://localhost:8000/'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js|jsx$/,
         loader: 'babel-loader',
         exclude: /node_modules/
@@ -34,7 +33,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.join(__dirname, '../../../app/assets/javascripts'),
-    port: 8080,
+    port: 8000,
     headers: {
       'Access-Control-Allow-Origin': '*'
     }

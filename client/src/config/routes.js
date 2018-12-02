@@ -3,7 +3,7 @@ import EventList from '../containers/event/event_list_container'
 import Event from '../containers/event/event_container'
 import EventCreate from '../containers/event/event_create_container'
 import EventEdit from '../containers/event/event_edit_container'
-import CompanyList from '../components/company/list'
+import CompanyList from '../containers/company/company_list_container'
 import CategoryList from '../components/category/list'
 
 const routes = [

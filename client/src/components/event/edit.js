@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { EditForm } from '../../containers/event/form_container'
+import { EditForm } from '../../containers/form/form_container'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 
-class EventCreate extends Component {
+class EventEdit extends Component {
   componentDidMount() {
     const { currentEvent, fetchCompanies, events, match } = this.props
     const event = events.find(event => {
@@ -25,4 +25,4 @@ class EventCreate extends Component {
   }
 }
 
-export default EventCreate
+export default EventEdit

@@ -12,7 +12,7 @@ export function fetchCompany(id) {
     .catch(err => ({ err }))
 }
 
-export function updateCompany({ id, data }) {
+export function updateCompany({ id, ...data }) {
   return API.put(`/companies/${id}`, {
     name: data.name
   })

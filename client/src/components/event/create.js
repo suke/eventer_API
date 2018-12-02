@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Form from '../../containers/event/form_container'
+import Form from '../../containers/form/form_container'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 

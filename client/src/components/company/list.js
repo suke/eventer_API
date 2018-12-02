@@ -19,7 +19,7 @@ class CompanyList extends Component {
         <Header>
           <H2>企業一覧</H2>
           <CreateButton width="60px" height="30px" borderColoer="#666">
-            <ButtonLink to={`/company/create`} height="26px">
+            <ButtonLink to={`/companies/create`} height="26px">
               Create
             </ButtonLink>
           </CreateButton>
@@ -48,20 +48,10 @@ class CompanyList extends Component {
                 moment(event.updated_at).format('YYYY-MM-DD h:mm:ss')
             },
             {
-              Header: 'Show',
-              Cell: ({ original: event }) => (
-                <EditButton width="60px" height="30px" borderColoer="#666">
-                  <ButtonLink to={`/company/${event.id}/show`} height="26px">
-                    Show
-                  </ButtonLink>
-                </EditButton>
-              )
-            },
-            {
               Header: 'Edit',
               Cell: ({ original: event }) => (
                 <EditButton width="60px" height="30px" borderColoer="#666">
-                  <ButtonLink to={`/company/${event.id}/edit`} height="26px">
+                  <ButtonLink to={`/companies/${event.id}/edit`} height="26px">
                     Edit
                   </ButtonLink>
                 </EditButton>

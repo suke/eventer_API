@@ -24,7 +24,6 @@ function* createEvent(action) {
 }
 
 function* updateEvent(action) {
-  console.log(action)
   const { result, err } = yield call(API.event.updateEvent, action.payload.data)
   if (result && !err) {
     yield put(updateEventSuccess(result.data))

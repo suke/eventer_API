@@ -14,6 +14,7 @@ class CompanyList extends Component {
 
   render() {
     const { companies, onClickDelete } = this.props
+    console.log(companies)
     return (
       <Wrapper>
         <Header>
@@ -49,9 +50,12 @@ class CompanyList extends Component {
             },
             {
               Header: 'Edit',
-              Cell: ({ original: event }) => (
+              Cell: ({ original: company }) => (
                 <EditButton width="60px" height="30px" borderColoer="#666">
-                  <ButtonLink to={`/companies/${event.id}/edit`} height="26px">
+                  <ButtonLink
+                    to={`/companies/${company.id}/edit`}
+                    height="26px"
+                  >
                     Edit
                   </ButtonLink>
                 </EditButton>
@@ -59,9 +63,14 @@ class CompanyList extends Component {
             },
             {
               Header: 'Delete',
-              Cell: ({ original: event }) => {
+              Cell: ({ original: company }) => {
                 return (
-                  <EditButton width="60px" height="30px" borderColoer="#666">
+                  <EditButton
+                    width="60px"
+                    height="30px"
+                    borderColoer="#666"
+                    onClick={() => onClickDelete(company.id)}
+                  >
                     Delete
                   </EditButton>
                 )

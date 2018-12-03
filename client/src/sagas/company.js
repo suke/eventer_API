@@ -3,12 +3,16 @@ import { toast } from 'react-toastify'
 import API from '../api'
 
 import {
+  CREATE_COMPANY,
+  createCompanySuccess,
   FETCH_COMPANIES,
   fetchCompaniesSuccess,
   UPDATE_COMPANY,
   updateCompanySuccess,
   currentCompany as setCurrentCompany,
   FETCH_COMPANIES_AND_SELECT_CURRENT_COMPANY,
+  DELETE_COMPANY,
+  deleteCompanySuccess
 } from '../modules/company'
 
 function* fetchCompanies() {
@@ -29,13 +33,38 @@ function* fetchCompaniesAndSelectCurrentCompany(action) {
   }
 }
 
+function* createCompany(action) {
+  const { result, err } = yield call(
+    API.company.createCompany,
+    action.payload.data
+  )
+  if (result && !err) {
+    yield put(createCompanySuccess(result.data))
+    toast.success('Created an company')
+    yield call(action.payload.history.push, '/companies')
+  }
+}
+
 function* updateCompany(action) {
-  console.log(action.payload.data)
-  const { result, err } = yield call(API.company.updateCompany, action.payload.data)
+  const { result, err } = yield call(
+    API.company.updateCompany,
+    action.payload.data
+  )
   if (result && !err) {
     yield put(updateCompanySuccess(result.data))
     toast.success('Update completed')
     yield call(action.payload.history.push, '/companies')
+  }
+}
+
+function* deleteCompany(action) {
+  const { result, err } = yield call(
+    API.company.deleteCompany,
+    action.payload.id
+  )
+  if (result && !err) {
+    yield put(deleteCompanySuccess(result.data))
+    toast.success(`${result.data.message}`)
   }
 }
 
@@ -45,7 +74,9 @@ const companySagas = [
     FETCH_COMPANIES_AND_SELECT_CURRENT_COMPANY,
     fetchCompaniesAndSelectCurrentCompany
   ),
-  takeEvery(UPDATE_COMPANY, updateCompany)
+  takeEvery(CREATE_COMPANY, createCompany),
+  takeEvery(UPDATE_COMPANY, updateCompany),
+  takeEvery(DELETE_COMPANY, deleteCompany)
 ]
 
 export default companySagas

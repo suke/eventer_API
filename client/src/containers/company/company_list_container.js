@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchCompanies } from '../../modules/company'
+import { fetchCompanies, deleteCompany } from '../../modules/company'
 import CompanyList from '../../components/company/list'
 
 const mapStateToProps = state => {
@@ -10,7 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToPros = dispatch => {
   return {
-    fetchCompanies: () => dispatch(fetchCompanies())
+    fetchCompanies: () => dispatch(fetchCompanies()),
+    onClickDelete: id => dispatch(deleteCompany(id))
   }
 }
 

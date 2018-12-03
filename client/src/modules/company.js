@@ -96,6 +96,8 @@ export default function companyReducer(state = initialState, action) {
   switch (action.type) {
     case CURRENT_COMPANY:
       return { ...state, currentCompany: { ...action.payload.data } }
+    case CREATE_COMPANY_SUCCESS:
+      return { ...state, companies: [...state.companies, action.payload.data] }
     case FETCH_COMPANIES_SUCCESS:
       return { ...state, companies: [...action.payload.data] }
     case UPDATE_COMPANY_SUCCESS:
@@ -104,7 +106,18 @@ export default function companyReducer(state = initialState, action) {
       })
       const newCompanies = [...state.companies]
       newCompanies.splice(updateIndex, 1, action.payload.data)
-      return { ...state, currentCompany: action.payload.data, companies: newCompanies }
+      return {
+        ...state,
+        currentCompany: action.payload.data,
+        companies: newCompanies
+      }
+    case DELETE_COMPANY_SUCCESS:
+      return {
+        ...state,
+        companies: [...state.companies].filter(company => {
+          return company.id !== action.payload.data.id
+        })
+      }
     default:
       return state
   }

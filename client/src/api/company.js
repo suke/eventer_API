@@ -1,5 +1,14 @@
 import API from './base'
 
+export function createCompany({ name, company_id }) {
+  return API.post('/companies', {
+    name,
+    company_id
+  })
+    .then(result => ({ result }))
+    .catch(err => ({ err }))
+}
+
 export function fetchCompanies() {
   return API.get('/companies')
     .then(result => ({ result }))

@@ -3,7 +3,7 @@ module V1
     resources :categories do
       desc 'Return Categories',
           success: CategorySerializer,
-          produces: %w[application/json application/vnd.api+json]
+          produces: %w[application/json]
       get serializer: CategorySerializer do
         categories = Category.all
 

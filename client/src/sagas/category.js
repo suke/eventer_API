@@ -23,7 +23,7 @@ function* fetchCategories() {
 }
 
 function* fetchCategoriesAndSelectCurrentCategory(action) {
-  const { result, err } = yield call(API.category.fetchCategories)
+  const { result, err } = yield call(API.Category.fetchCategories)
   if (result && !err) {
     yield put(createCategorySuccess(result.data))
     const currentCategory = result.data.find(

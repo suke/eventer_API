@@ -6,7 +6,7 @@ import EventEdit from '../containers/event/event_edit_container'
 import CompanyList from '../containers/company/company_list_container'
 import CompanyCreate from '../containers/company/company_create_container'
 import CompanyEdit from '../containers/company/company_edit_container'
-import CategoryList from '../components/category/list'
+import CategoryList from '../containers/category/category_list_container'
 
 const routes = [
   {

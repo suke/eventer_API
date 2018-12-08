@@ -71,13 +71,39 @@ export const deleteCategorySuccess = data => ({
 })
 
 const initialState = {
+  currentCategory: {},
   categories: []
 }
 
 export default function categoryReducer(state = initialState, action) {
   switch (action.type) {
+    case CURRENT_CATEGORY:
+      return { ...state, currentCategory: { ...action.payload.data } }
+    case CREATE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        categories: [...state.categories, action.payload.data]
+      }
     case FETCH_CATEGORIES_SUCCESS:
       return { ...state, categories: [...action.payload.data] }
+    case UPDATE_CATEGORIES_SUCCESS:
+      const updateIndex = state.categories.findIndex(category => {
+        return category.id === action.payload.data.id
+      })
+      const newCategories = [...state.categories]
+      newCategories.splice(updateIndex, 1, action.payload.data)
+      return {
+        ...state,
+        currentCategory: action.payload.data,
+        categories: newCompanies
+      }
+    case DELETE_CATEGORIESY_SUCCESS:
+      return {
+        ...state,
+        categories: [...state.categories].filter(category => {
+          return category.id !== action.payload.data.id
+        })
+      }
     default:
       return state
   }

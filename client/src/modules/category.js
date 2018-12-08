@@ -15,6 +15,9 @@ export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS'
 
 export const CURRENT_CATEGORY = 'CURRENT_CATEGORY'
+
+export const FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY =
+  'FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY'
 // action creators
 export const createCategory = ({ data, history }) => ({
   type: CREATE_CATEGORY,
@@ -54,6 +57,13 @@ export const fetchCategoriesSuccess = data => ({
   type: FETCH_CATEGORIES_SUCCESS,
   payload: {
     data
+  }
+})
+
+export const fetchCategoriesAndSelectCurrentCategory = id => ({
+  type: FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY,
+  payload: {
+    id
   }
 })
 

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :categories
   resources :event_schedules
   get '/event/schedules/:id' => 'event_schedules#schedules'
+  mount API::Root => '/api'
 end

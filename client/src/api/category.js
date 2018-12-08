@@ -1,5 +1,13 @@
 import API from './base'
 
+export function createCategory({ name }) {
+  return API.post('/categories', {
+    name
+  })
+    .then(result => ({ result }))
+    .catch(err => ({ err }))
+}
+
 export function fetchCategories() {
   return API.get('/categories')
     .then(result => ({ result }))

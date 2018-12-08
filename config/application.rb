@@ -49,6 +49,9 @@ module EventerApi
       end
     end
 
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
     Raven.configure do |config|
       config.dsn = Settings.sentry_dns
       config.environments = %w(development)

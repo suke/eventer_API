@@ -1,11 +1,14 @@
 import { connect } from 'react-redux'
-import { updateCompany, fetchCompaniesAndSelectCurrentCompany } from '../../modules/company'
+import {
+  updateCompany,
+  fetchCompaniesAndSelectCurrentCompany
+} from '../../modules/company'
 import CompanyEdit from '../../components/company/edit'
 
 const mapStateToProps = ({ companyReducer }) => {
   return {
     companies: companyReducer.companies,
-    currentCompany: companyReducer.currentCompany,
+    currentCompany: companyReducer.currentCompany
   }
 }
 

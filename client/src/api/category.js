@@ -20,9 +20,9 @@ export function fetchCategory(id) {
     .catch(err => ({ err }))
 }
 
-export function updateCategory({ id, data }) {
+export function updateCategory({ id, name }) {
   return API.put(`/categories/${id}`, {
-    name: data.name
+    name
   })
     .then(result => ({ result }))
     .catch(err => ({ err }))

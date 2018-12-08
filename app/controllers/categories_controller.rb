@@ -22,9 +22,11 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    category = Category.find_by!(id: params[:id])
+    id = params[:id].to_i
+    category = Category.find_by!(id: id)
     category.destroy!
-    render json: success_message('id', params[:id])
+    render json: {id: id, message: success_message('id', id)}
+
   end
 
   private

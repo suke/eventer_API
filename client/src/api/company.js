@@ -1,9 +1,8 @@
 import API from './base'
 
-export function createCompany({ name, company_id }) {
+export function createCompany({ name }) {
   return API.post('/companies', {
-    name,
-    company_id
+    name
   })
     .then(result => ({ result }))
     .catch(err => ({ err }))

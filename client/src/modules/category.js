@@ -94,7 +94,7 @@ export default function categoryReducer(state = initialState, action) {
       }
     case FETCH_CATEGORIES_SUCCESS:
       return { ...state, categories: [...action.payload.data] }
-    case UPDATE_CATEGORIES_SUCCESS:
+    case UPDATE_CATEGORY_SUCCESS:
       const updateIndex = state.categories.findIndex(category => {
         return category.id === action.payload.data.id
       })
@@ -105,7 +105,7 @@ export default function categoryReducer(state = initialState, action) {
         currentCategory: action.payload.data,
         categories: newCompanies
       }
-    case DELETE_CATEGORIESY_SUCCESS:
+    case DELETE_CATEGORY_SUCCESS:
       return {
         ...state,
         categories: [...state.categories].filter(category => {

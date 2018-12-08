@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 const mapDispatchToPros = dispatch => {
   return {
     fetchCategories: () => dispatch(fetchCategories()),
-    deleteCategory: id => dispatch(deleteCategory(id))
+    onClickDelete: id => dispatch(deleteCategory(id))
   }
 }
 

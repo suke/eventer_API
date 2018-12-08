@@ -4,8 +4,8 @@ import Wrapper from '../main_wrapper'
 
 class CategoryEdit extends Component {
   componentDidMount() {
-    const { fetchCompaniesAndSelectCurrentCompany, match } = this.props
-    fetchCompaniesAndSelectCurrentCompany(parseInt(match.params.id, 10))
+    const { fetchCategoriesAndSelectCurrentCategory, match } = this.props
+    fetchCategoriesAndSelectCurrentCategory(parseInt(match.params.id, 10))
   }
 
   render() {

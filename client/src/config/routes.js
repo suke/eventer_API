@@ -7,6 +7,7 @@ import CompanyList from '../containers/company/company_list_container'
 import CompanyCreate from '../containers/company/company_create_container'
 import CompanyEdit from '../containers/company/company_edit_container'
 import CategoryList from '../containers/category/category_list_container'
+import CategoryCreate from '../containers/category/category_create_container'
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/categories',
     exact: true,
     component: () => <CategoryList />
+  },
+  {
+    path: '/categories/create',
+    exact: true,
+    component: props => <CategoryCreate {...props} />
   }
 ]
 

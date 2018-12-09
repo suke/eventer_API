@@ -1,18 +1,18 @@
 class EventsController < ApplicationController
-
   def index
-    events = Event.all.includes(:company)
-    render json: events
+    return render 'admin/top'
   end
 
   def show
-    event = Event.find_by!(id: params[:id])
-    render json: event
+    return render 'admin/top'
   end
 
   def create
-    event = Event.create!(event_params)
-    render json: event
+    return render 'admin/top'
+  end
+
+  def edit
+    return render 'admin/top'
   end
 
   def update

@@ -1,32 +1,25 @@
 class CategoriesController < ApplicationController
 
   def index
-    categories = Category.all
-    render json: categories
+    return render 'admin/top'
   end
 
   def show
-    category = Category.find_by!(id: params[:id])
-    render json: category
+    return render 'admin/top'
   end
 
   def create
-    category = Category.create!(category_params)
-    render json: category
+    return render 'admin/top'
+  end
+
+  def edit
+    return render 'admin/top'
   end
 
   def update
-    category = Category.find_by!(id: params[:id])
-    category.update!(category_params)
-    render json: category
   end
 
   def destroy
-    id = params[:id].to_i
-    category = Category.find_by!(id: id)
-    category.destroy!
-    render json: {id: id, message: success_message('id', id)}
-
   end
 
   private

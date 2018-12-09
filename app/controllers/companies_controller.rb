@@ -1,18 +1,19 @@
 class CompaniesController < ApplicationController
 
   def index
-    companies = Company.all
-    render json: companies
+    return render 'admin/top'
   end
 
   def show
-    company = Company.find_by!(id: params[:id])
-    render json: company
+    return render 'admin/top'
   end
 
   def create
-    company = Company.create!(company_params)
-    render json: company
+    return render 'admin/top'
+  end
+
+  def edit
+    return render 'admin/top'
   end
 
   def update

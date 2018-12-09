@@ -1,17 +1,18 @@
 class EventSchedulesController < ApplicationController
   def index
-    @event_schedules = EventSchedule.all.includes(:event)
-    render json: @event_schedules, each_serializer: EventScheduleSerializer
+    return render 'admin/top'
   end
 
   def show
-    @event_schedule = EventSchedule.find_by!(id: params[:id])
-    render json: @event_schedule, serializer: EventScheduleSerializer
+    return render 'admin/top'
   end
 
   def create
-    @event_schedule = EventSchedule.create!(event_schedule_params)
-    render json: @event_schedule
+    return render 'admin/top'
+  end
+
+  def edit
+    return render 'admin/top'
   end
 
   def update

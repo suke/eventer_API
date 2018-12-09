@@ -6,5 +6,6 @@ module V1
     mount V1::Categories
     mount V1::Companies
     mount V1::Events
+    mount V1::EventSchedules
   end
 end

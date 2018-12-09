@@ -1,7 +1,6 @@
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
-const baseStyle = className => injectGlobal`
-  ${className}
+const GlobalStyle = createGlobalStyle`
   .ReactTable {
     position: relative;
     display: -webkit-box;
@@ -1710,4 +1709,4 @@ const baseStyle = className => injectGlobal`
 
 `
 
-export default baseStyle
+export default GlobalStyle

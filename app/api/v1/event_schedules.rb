@@ -8,7 +8,6 @@ module V1
             produces: %w[application/json]
         params do
           requires :event_id, Integer
-          requires :name, type: String
           requires :started_at, type: Date
           requires :ended_at, type: Date
           optional :address, type: String
@@ -25,7 +24,6 @@ module V1
             produces: %w[application/json]
           params do
             requires :event_id, Integer
-            requires :name, type: String
             requires :started_at, type: Date
             requires :ended_at, type: Date
             optional :address, type: String

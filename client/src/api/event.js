@@ -30,6 +30,12 @@ export function fetchEvents() {
     .catch(err => ({ err }))
 }
 
+export function fetchEvent(id) {
+  return API.get(`/events/${id}`)
+    .then(result => ({ result }))
+    .catch(err => ({ err }))
+}
+
 export function fetchEventSchedule(id) {
   return API.get(`/event/schedules/${id}`)
     .then(result => ({ result }))

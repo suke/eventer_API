@@ -19,6 +19,14 @@ module V1
         end
 
         resource ':id' do
+          desc 'get event schedule',
+            success: EventScheduleSerializer,
+            produces: %w[application/json]
+          get serializer: EventScheduleSerializer do
+            event_schedule = EventSchedule.where(event_id: params[:id])
+            event_schedule
+          end
+
           desc 'update event schedule',
             success: EventScheduleSerializer,
             produces: %w[application/json]

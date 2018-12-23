@@ -35,3 +35,41 @@ export function fetchEventSchedule(id) {
     .then(result => ({ result }))
     .catch(err => ({ err }))
 }
+export function createEventSchedule({
+  event_id,
+  started_at,
+  ended_at,
+  address
+}) {
+  return API.post('/event/schedules/', {
+    event_id,
+    started_at,
+    ended_at,
+    address
+  })
+    .then(result => ({ result }))
+    .catch(err => ({ err }))
+}
+
+export function updateEventSchedule({
+  id,
+  event_id,
+  started_at,
+  ended_at,
+  address
+}) {
+  return API.put(`/event/schedules/${id}`, {
+    event_id,
+    started_at,
+    ended_at,
+    address
+  })
+    .then(result => ({ result }))
+    .catch(err => ({ err }))
+}
+
+export function deleteEventSchedule(id) {
+  return API.delete(`/event/schedules/${id}`)
+    .then(result => ({ result }))
+    .catch(err => ({ err }))
+}

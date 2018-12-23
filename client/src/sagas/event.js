@@ -16,6 +16,11 @@ import {
   fetchEventsSuccess
 } from '../modules/event'
 
+import {
+  CREATE_EVENT_SCHEDULE,
+  createEventScheduleSuccess
+} from '../modules/event_schedule'
+
 function* createEvent(action) {
   const { result, err } = yield call(API.event.createEvent, action.payload.data)
   if (result && !err) {
@@ -82,7 +87,7 @@ function* createEventSchedule(action) {
     action.payload.data
   )
   if (result && !err) {
-    yield put(createEventSuccess(result.data))
+    yield put(createEventScheduleSuccess(result.data))
     toast.success('Created an event schedule')
     yield call(action.payload.history.push, '/')
   }
@@ -94,7 +99,8 @@ const eventSagas = [
   takeEvery(DELETE_EVENT, deleteEvent),
   takeEvery(FETCH_EVENTS, fetchEvents),
   takeEvery(FETCH_EVENT_SCHEDULE, fetchEventSchedule),
-  takeEvery(FETCH_EVENT_AND_SCHEDULE, fetchEventAndSchedule)
+  takeEvery(FETCH_EVENT_AND_SCHEDULE, fetchEventAndSchedule),
+  takeEvery(CREATE_EVENT_SCHEDULE, createEventSchedule)
 ]
 
 export default eventSagas

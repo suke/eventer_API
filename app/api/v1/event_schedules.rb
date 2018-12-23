@@ -7,7 +7,7 @@ module V1
             success: EventScheduleSerializer,
             produces: %w[application/json]
         params do
-          requires :event_id, Integer
+          requires :event_id, type: Integer
           requires :started_at, type: Date
           requires :ended_at, type: Date
           optional :address, type: String

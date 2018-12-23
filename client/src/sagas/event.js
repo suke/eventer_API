@@ -57,6 +57,18 @@ function* fetchEventSchedule(action) {
   }
 }
 
+function* createEventSchedule(action) {
+  const { result, err } = yield call(
+    API.event.createEventSchedule,
+    action.payload.data
+  )
+  if (result && !err) {
+    yield put(createEventSuccess(result.data))
+    toast.success('Created an event schedule')
+    yield call(action.payload.history.push, '/')
+  }
+}
+
 const eventSagas = [
   takeEvery(CREATE_EVENT, createEvent),
   takeEvery(UPDATE_EVENT, updateEvent),

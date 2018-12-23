@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import ReactTable from 'react-table'
 import moment from 'moment'
 import Wrapper from '../main_wrapper'
-import { EditButton } from '../button'
+import Button, { EditButton } from '../button'
 import Link from '../edit_button_link'
 
 class Event extends Component {
   componentDidMount() {
-    const { match, fetchEventSchedule } = this.props
-    fetchEventSchedule(match.params.id)
+    const { match, fetchEventAndSchedule } = this.props
+    fetchEventAndSchedule(match.params.id)
   }
 
   render() {
@@ -19,8 +19,25 @@ class Event extends Component {
     })
     return (
       <Wrapper>
+        <EventPresenter event={event} schedules={schedules} />
+      </Wrapper>
+    )
+  }
+}
+
+const EventPresenter = ({ event, schedules }) => {
+  if (event) {
+    return (
+      <React.Fragment>
         <H2>{event.name}</H2>
-        <H3>スケジュール一覧</H3>
+        <Header>
+          <H3>スケジュール一覧</H3>
+          <CreateButton width="60px" height="30px" borderColoer="#666">
+            <Link to={`/schedule/create`} height="26px">
+              ScheduleCreate
+            </Link>
+          </CreateButton>
+        </Header>
         <ReactTable
           data={schedules}
           columns={[
@@ -70,8 +87,10 @@ class Event extends Component {
           defaultPageSize={20}
           className="-striped -highlight"
         />
-      </Wrapper>
+      </React.Fragment>
     )
+  } else {
+    return <div>...loading</div>
   }
 }
 
@@ -81,6 +100,15 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   margin-bottom: 10px;
+`
+
+const CreateButton = styled(Button)`
+  margin-right: 40px;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
 
 export default Event

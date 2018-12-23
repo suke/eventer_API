@@ -24,6 +24,18 @@ module V1
       end
 
       resource ':id' do
+        desc 'get Event',
+          success: EventSerializer,
+          produces: %w[application/json]
+        params do
+          requires :id, type: Integer
+        end
+        get serializer: EventSerializer do
+          declared_params = declared(params, include_missing: false)
+          event = Event.find_by!(id: declared_params[:id])
+          event
+        end
+
         desc 'update Event',
           success: EventSerializer,
           produces: %w[application/json]
@@ -38,7 +50,7 @@ module V1
           event.update!(declared_params)
           event
         end
-        
+
         desc 'delete Event'
         delete do
           id = params[:id].to_i

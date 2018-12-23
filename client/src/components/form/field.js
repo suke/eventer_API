@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import DatePicker from './date_picker'
 export const InputField = ({
   input,
   type = 'text',
@@ -32,6 +32,13 @@ export const SelectField = ({
         </option>
       ))}
     </Select>
+  </FormContainer>
+)
+
+export const DatePickerField = ({ input, label, meta: { touched, error } }) => (
+  <FormContainer>
+    <Label>{label}</Label>
+    <DatePicker {...input} />
   </FormContainer>
 )
 

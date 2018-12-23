@@ -84,7 +84,11 @@ export const fetchSchedule = id => ({
 
 const initialState = {
   event_schedules: [],
-  current_event_schedule: {}
+  current_event_schedule: {
+    started_at: new Date(),
+    ended_at: new Date(),
+    address: ''
+  }
 }
 
 export default function eventScheduleReducer(state = initialState, action) {

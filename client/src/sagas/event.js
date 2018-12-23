@@ -7,10 +7,12 @@ import {
   DELETE_EVENT,
   FETCH_EVENTS,
   FETCH_EVENT_SCHEDULE,
+  FETCH_EVENT_AND_SCHEDULE,
   createEventSuccess,
   updateEventSuccess,
   deleteEventSuccess,
   fetchEventScheduleSuccess,
+  fetchEventSuccess,
   fetchEventsSuccess
 } from '../modules/event'
 
@@ -57,6 +59,23 @@ function* fetchEventSchedule(action) {
   }
 }
 
+function* fetchEventAndSchedule(action) {
+  const { result: event, err: eventErr } = yield call(
+    API.event.fetchEvent,
+    action.payload.id
+  )
+  if (event && !eventErr) {
+    yield put(fetchEventSuccess(event.data))
+    const { result: schedule, err: scheduleErr } = yield call(
+      API.event.fetchEventSchedule,
+      action.payload.id
+    )
+    if (schedule && !scheduleErr) {
+      yield put(fetchEventScheduleSuccess(schedule.data))
+    }
+  }
+}
+
 function* createEventSchedule(action) {
   const { result, err } = yield call(
     API.event.createEventSchedule,
@@ -74,7 +93,8 @@ const eventSagas = [
   takeEvery(UPDATE_EVENT, updateEvent),
   takeEvery(DELETE_EVENT, deleteEvent),
   takeEvery(FETCH_EVENTS, fetchEvents),
-  takeEvery(FETCH_EVENT_SCHEDULE, fetchEventSchedule)
+  takeEvery(FETCH_EVENT_SCHEDULE, fetchEventSchedule),
+  takeEvery(FETCH_EVENT_AND_SCHEDULE, fetchEventAndSchedule)
 ]
 
 export default eventSagas

@@ -95,7 +95,10 @@ function* createEventSchedule(action) {
   if (result && !err) {
     yield put(createEventScheduleSuccess(result.data))
     toast.success('Created an event schedule')
-    yield call(action.payload.history.push, '/')
+    yield call(
+      action.payload.history.push,
+      `/events/${action.payload.data.event_id}/show`
+    )
   }
 }
 

@@ -28,10 +28,6 @@ class CategoryList extends Component {
           data={categories}
           columns={[
             {
-              Header: 'ID',
-              accessor: 'id'
-            },
-            {
               Header: 'Name',
               accessor: 'name'
             },

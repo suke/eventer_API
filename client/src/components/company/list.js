@@ -29,10 +29,6 @@ class CompanyList extends Component {
           data={companies}
           columns={[
             {
-              Header: 'ID',
-              accessor: 'id'
-            },
-            {
               Header: 'Name',
               accessor: 'name'
             },

@@ -6,7 +6,7 @@ import Wrapper from '../main_wrapper'
 class EventScheduleCreate extends Component {
   render() {
     const { match, handleSubmit, history } = this.props
-    const event_id = match.params.id
+    const event_id = match.params.event_id
     return (
       <Wrapper>
         <H2>スケジュール作成</H2>

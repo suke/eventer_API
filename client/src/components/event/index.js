@@ -33,7 +33,7 @@ const EventPresenter = ({ event, schedules }) => {
         <Header>
           <H3>スケジュール</H3>
           <CreateButton width="60px" height="30px" borderColoer="#666">
-            <Link to={`/event/${event.id}/schedules/create`} height="26px">
+            <Link to={`/events/${event.id}/schedules/create`} height="26px">
               CreateSchedule
             </Link>
           </CreateButton>

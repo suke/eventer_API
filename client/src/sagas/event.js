@@ -129,13 +129,3 @@ const eventSagas = [
 ]
 
 export default eventSagas
-
-// export default function* eventSaga() {
-//   yield all([
-//     takeEvery(CREATE_EVENT, createEvent),
-//     takeEvery(UPDATE_EVENT, updateEvent),
-//     takeEvery(DELETE_EVENT, deleteEvent),
-//     takeEvery(FETCH_EVENTS, fetchEvents),
-//     takeEvery(FETCH_EVENT_SCHEDULE, fetchEventSchedule)
-//   ])
-// }

@@ -91,18 +91,6 @@ export const fetchEventSuccess = data => ({
   }
 })
 
-export const fetchEventSchedule = id => ({
-  type: FETCH_EVENT_SCHEDULE,
-  payload: { id }
-})
-
-export const fetchEventScheduleSuccess = data => ({
-  type: FETCH_EVENT_SCHEDULE_SUCCESS,
-  payload: {
-    data
-  }
-})
-
 export const fetchEventAndSchedule = id => ({
   type: FETCH_EVENT_AND_SCHEDULE,
   payload: { id }
@@ -145,11 +133,6 @@ export default function eventReducer(state = initialState, action) {
       return { ...state, events: [...state.events, action.payload.data] }
     case FETCH_EVENTS_SUCCESS:
       return { ...state, events: [...action.payload.data] }
-    case FETCH_EVENT_SCHEDULE_SUCCESS:
-      return {
-        ...state,
-        schedules: [...action.payload.data]
-      }
     default:
       return state
   }

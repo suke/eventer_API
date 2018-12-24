@@ -57,11 +57,13 @@ const Label = styled.label`
 const Select = styled.select`
   min-width: 400px;
   padding: 5px;
+  border-radius: 5px;
   border: 1px solid #ccc;
 `
 
 const Input = styled.input`
   min-width: 400px;
   padding: 5px;
+  border-radius: 5px;
   border: 1px solid #ccc;
 `

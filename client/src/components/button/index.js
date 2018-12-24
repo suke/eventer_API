@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   display: block;
+  border-radius: 5px;
   min-width: ${props => props.width};
   height: ${props => props.height};
   border: 2px solid ${props => props.borderColoer};

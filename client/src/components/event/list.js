@@ -28,10 +28,6 @@ class EventList extends Component {
           data={events}
           columns={[
             {
-              Header: 'ID',
-              accessor: 'id'
-            },
-            {
               Header: 'Name',
               accessor: 'name'
             },

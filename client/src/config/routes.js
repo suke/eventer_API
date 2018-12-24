@@ -10,6 +10,7 @@ import CategoryList from '../containers/category/category_list_container'
 import CategoryCreate from '../containers/category/category_create_container'
 import CategoryEdit from '../containers/category/category_edit_container'
 import EventScheduleCreate from '../containers/event_schedule/event_schedule_create_container'
+import EventScheduleEdit from '../containers/event_schedule/event_schedule_edit_container'
 
 const routes = [
   {
@@ -63,9 +64,14 @@ const routes = [
     component: props => <CategoryEdit {...props} />
   },
   {
-    path: '/schedules/:id/create',
+    path: '/events/:event_id/schedules/create',
     exact: true,
     component: props => <EventScheduleCreate {...props} />
+  },
+  {
+    path: '/events/:event_id/schedules/:id/edit',
+    exact: true,
+    component: props => <EventScheduleEdit {...props} />
   }
 ]
 

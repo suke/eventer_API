@@ -13,9 +13,8 @@ export const CURRENT_EVENT_SCHEDULE = 'CURRENT_EVENT_SCHEDULE'
 export const FETCH_EVENT_SCHEDULES = 'FETCH_EVENT_SCHEDULES'
 export const FETCH_EVENT_SCHEDULES_SUCCESS = 'FETCH_EVENT_SCHEDULES_SUCCESS'
 
-export const FETCH_EVENT_SCHEDULE_SCHEDULE = 'FETCH_EVENT_SCHEDULE_SCHEDULE'
-export const FETCH_EVENT_SCHEDULE_SCHEDULE_SUCCESS =
-  'FETCH_EVENT_SCHEDULE_SCHEDULE_SUCCESS'
+export const FETCH_EVENT_SCHEDULE = 'FETCH_EVENT_SCHEDULE'
+export const FETCH_EVENT_SCHEDULE_SUCCESS = 'FETCH_EVENT_SCHEDULE_SUCCESS'
 
 // action creators
 export const createEventSchedule = ({ data, history }) => ({
@@ -77,9 +76,21 @@ export const fetchEventSchedulesSuccess = data => ({
   }
 })
 
-export const fetchSchedule = id => ({
-  type: FETCH_EVENT_SCHEDULE_SCHEDULE,
-  payload: { id }
+export const fetchSchedule = (event_id, id) => ({
+  type: FETCH_EVENT_SCHEDULE,
+  payload: {
+    data: {
+      event_id,
+      id
+    }
+  }
+})
+
+export const fetchEventScheduleSuccess = data => ({
+  type: FETCH_EVENT_SCHEDULE_SUCCESS,
+  payload: {
+    data
+  }
 })
 
 const initialState = {
@@ -118,13 +129,13 @@ export default function eventScheduleReducer(state = initialState, action) {
           return event_schedule.id !== action.payload.data.id
         })
       }
-    case FETCH_EVENT_SCHEDULES_SUCCESS:
-      return { ...state, event_schedules: [...action.payload.data] }
-    case FETCH_EVENT_SCHEDULE_SCHEDULE_SUCCESS:
+    case FETCH_EVENT_SCHEDULE_SUCCESS:
       return {
         ...state,
-        schedules: [...action.payload.data]
+        current_event_schedule: action.payload.data
       }
+    case FETCH_EVENT_SCHEDULES_SUCCESS:
+      return { ...state, event_schedules: [...action.payload.data] }
     default:
       return state
   }

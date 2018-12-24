@@ -11,14 +11,17 @@ import {
   createEventSuccess,
   updateEventSuccess,
   deleteEventSuccess,
-  fetchEventScheduleSuccess,
   fetchEventSuccess,
   fetchEventsSuccess
 } from '../modules/event'
 
 import {
   CREATE_EVENT_SCHEDULE,
-  createEventScheduleSuccess
+  UPDATE_EVENT_SCHEDULE,
+  createEventScheduleSuccess,
+  fetchEventScheduleSuccess,
+  fetchEventSchedulesSuccess,
+  updateEventScheduleSuccess
 } from '../modules/event_schedule'
 
 function* createEvent(action) {
@@ -56,11 +59,14 @@ function* fetchEvents(action) {
 
 function* fetchEventSchedule(action) {
   const { result, err } = yield call(
-    API.event.fetchEventSchedule,
-    action.payload.id
+    API.event.fetchEventSchedules,
+    action.payload.data.event_id
   )
   if (result && !err) {
-    yield put(fetchEventScheduleSuccess(result.data))
+    const current_schedule = result.data.find(
+      schedule => schedule.id === +action.payload.data.id
+    )
+    yield put(fetchEventScheduleSuccess(current_schedule))
   }
 }
 
@@ -72,11 +78,11 @@ function* fetchEventAndSchedule(action) {
   if (event && !eventErr) {
     yield put(fetchEventSuccess(event.data))
     const { result: schedule, err: scheduleErr } = yield call(
-      API.event.fetchEventSchedule,
+      API.event.fetchEventSchedules,
       action.payload.id
     )
     if (schedule && !scheduleErr) {
-      yield put(fetchEventScheduleSuccess(schedule.data))
+      yield put(fetchEventSchedulesSuccess(schedule.data))
     }
   }
 }
@@ -93,6 +99,21 @@ function* createEventSchedule(action) {
   }
 }
 
+function* updateEventSchedule(action) {
+  const { result, err } = yield call(
+    API.event.updateEventSchedule,
+    action.payload.data
+  )
+  if (result && !err) {
+    yield put(updateEventScheduleSuccess(result.data))
+    toast.success('Update an event schedule')
+    yield call(
+      action.payload.history.push,
+      `/events/${action.payload.data.event_id}/show`
+    )
+  }
+}
+
 const eventSagas = [
   takeEvery(CREATE_EVENT, createEvent),
   takeEvery(UPDATE_EVENT, updateEvent),
@@ -100,7 +121,8 @@ const eventSagas = [
   takeEvery(FETCH_EVENTS, fetchEvents),
   takeEvery(FETCH_EVENT_SCHEDULE, fetchEventSchedule),
   takeEvery(FETCH_EVENT_AND_SCHEDULE, fetchEventAndSchedule),
-  takeEvery(CREATE_EVENT_SCHEDULE, createEventSchedule)
+  takeEvery(CREATE_EVENT_SCHEDULE, createEventSchedule),
+  takeEvery(UPDATE_EVENT_SCHEDULE, updateEventSchedule)
 ]
 
 export default eventSagas

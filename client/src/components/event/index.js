@@ -31,20 +31,16 @@ const EventPresenter = ({ event, schedules }) => {
       <React.Fragment>
         <H2>{event.name}</H2>
         <Header>
-          <H3>スケジュール一覧</H3>
+          <H3>スケジュール</H3>
           <CreateButton width="60px" height="30px" borderColoer="#666">
-            <Link to={`/schedules/${event.id}/create`} height="26px">
-              ScheduleCreate
+            <Link to={`/event/${event.id}/schedules/create`} height="26px">
+              CreateSchedule
             </Link>
           </CreateButton>
         </Header>
         <ReactTable
           data={schedules}
           columns={[
-            {
-              Header: 'ID',
-              accessor: 'id'
-            },
             {
               Header: 'Started_at',
               id: 'started_at',
@@ -77,7 +73,12 @@ const EventPresenter = ({ event, schedules }) => {
               Header: 'Edit',
               Cell: ({ original: schedule }) => (
                 <EditButton width="60px" height="30px">
-                  <Link to={`/events_schedules/${schedule.id}`} height="30px">
+                  <Link
+                    to={`/events/${schedule.event_id}/schedules/${
+                      schedule.id
+                    }/edit`}
+                    height="30px"
+                  >
                     Edit
                   </Link>
                 </EditButton>

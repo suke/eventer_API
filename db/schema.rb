@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_18_142720) do
+ActiveRecord::Schema.define(version: 2018_08_18_131758) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,5 @@ ActiveRecord::Schema.define(version: 2018_08_18_142720) do
     t.index ["name"], name: "index_events_on_name", unique: true
   end
 
-  add_foreign_key "event_schedules", "events"
   add_foreign_key "events", "companies"
 end

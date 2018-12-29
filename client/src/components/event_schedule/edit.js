@@ -11,7 +11,6 @@ class EventScheduleEdit extends Component {
   render() {
     const { match, handleSubmit, history } = this.props
     const event_id = match.params.event_id
-    console.log(handleSubmit)
     return (
       <Wrapper>
         <ScheduleForm

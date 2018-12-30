@@ -16,6 +16,12 @@ const EventForm = ({ handleSubmit, options }) => (
         options={options}
         initila
       />
+      <Field
+        name="site_url"
+        component={InputField}
+        type="text"
+        label="site_url"
+      />
       <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
     </form>
   </Wrapper>

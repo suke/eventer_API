@@ -15,7 +15,8 @@ module V1
           produces: %w[application/json]
       params do
         requires :name, type: String
-        optional :company_id, type: Integer
+        optional :company_id, type: Integer,
+        optional :site_url, type: String
       end
       post serializer: EventSerializer do
         declared_params = declared(params, include_missing: false)
@@ -42,7 +43,8 @@ module V1
         params do
           requires :id, type: Integer
           requires :name, type: String
-          optional :company_id, type: Integer
+          optional :company_id, type: Integer,
+          optional :site_url, type: String
         end
         put serializer: EventSerializer do
           declared_params = declared(params, include_missing: false)

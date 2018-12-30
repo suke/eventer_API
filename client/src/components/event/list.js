@@ -32,6 +32,10 @@ class EventList extends Component {
               accessor: 'name'
             },
             {
+              Header: 'SiteURL',
+              accessor: 'site_url'
+            },
+            {
               Header: 'Created_at',
               id: 'created_at',
               accessor: event =>

@@ -17,10 +17,28 @@ describe V1::Categories do
     end
     context 'params empty' do
       subject { post '/api/v1/categories', params: {} }
-      it 'return ' do
+      it 'return 400' do
         subject
         expect(response.status).to eq(400)
       end
+    end
+  end
+
+  describe 'PUT /api/v1/categories/:id' do
+    let(:category) { create(:category) }
+    subject { put "/api/v1/categories/#{category[:id]}", params: { name: 'test' } }
+    it 'return success' do
+      subject
+      expect(JSON.parse(response.body)['name']).to eq 'test'
+    end
+  end
+
+  describe 'DELETE /api/v1/categories/:id' do
+    let(:category) { create(:category) }
+    subject { delete "/api/v1/categories/#{category[:id]}" }
+    it 'return success' do
+      subject
+      expect(JSON.parse(response.body)['id']).to eq category[:id]
     end
   end
 end

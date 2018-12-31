@@ -5,7 +5,7 @@ describe V1::Companies do
     subject { get '/api/v1/companies' }
     it 'returns success' do
       subject
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -13,7 +13,7 @@ describe V1::Companies do
     subject { post '/api/v1/companies', params: { name: 'コミケット' } }
     it 'returns success' do
       subject
-      expect(response).to be_success
+      expect(response).to be_successful
     end
     context 'params empty' do
       subject { post '/api/v1/companies', params: {} }

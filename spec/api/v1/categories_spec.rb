@@ -5,7 +5,7 @@ describe V1::Categories do
     subject { get '/api/v1/categories' }
     it 'returns success' do
       subject
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -13,7 +13,7 @@ describe V1::Categories do
     subject { post '/api/v1/categories', params: { name: 'アイカツ' } }
     it 'returns success' do
       subject
-      expect(response).to be_success
+      expect(response).to be_successful
     end
     context 'params empty' do
       subject { post '/api/v1/categories', params: {} }

@@ -5,7 +5,7 @@ describe V1::Events do
     subject { get '/api/v1/events' }
     it 'returns success' do
       subject
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -14,7 +14,7 @@ describe V1::Events do
     subject { post '/api/v1/events', params: { name: 'コミックマーケット', company_id: company[:id] } }
     it 'returns success' do
       subject
-      expect(response).to be_success
+      expect(response).to be_successful
     end
     context 'params empty' do
       subject { post '/api/v1/events', params: {} }

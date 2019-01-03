@@ -61,6 +61,18 @@ module V1
           {id: id, message: success_delete_message('id', id)}
         end
       end
+
+      resources :schedules do
+        resource ':id' do
+          desc 'get event schedule',
+            success: EventScheduleSerializer,
+            produces: %w[application/json]
+          get serializer: EventScheduleSerializer do
+            event_schedule = EventSchedule.where(event_id: params[:id])
+            event_schedule
+          end
+        end
+      end
     end
   end
 end

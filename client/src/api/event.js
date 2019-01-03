@@ -39,7 +39,7 @@ export function fetchEvent(id) {
 }
 
 export function fetchEventSchedules(id) {
-  return API.get(`/event/schedules/${id}`)
+  return API.get(`/events/schedules/${id}`)
     .then(result => ({ result }))
     .catch(err => ({ err }))
 }

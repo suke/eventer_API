@@ -17,11 +17,22 @@ module V1
         requires :name, type: String
         optional :company_id, type: Integer
         optional :site_url, type: String
+        optional :categories, type: Array
       end
       post serializer: EventSerializer do
         declared_params = declared(params, include_missing: false)
-        event = Event.create!(declared_params)
-        event
+        categories = declared_params.delete(:categories)
+        Event.transaction do
+          @event = Event.new(declared_params)
+          if categories.present?
+            categories.each do |category|
+              @event.event_categories.build( { event_id: @event.id, category_id: category } )
+            end
+          end
+        end
+
+        @event.save!
+        @event
       end
 
       resource ':id' do
@@ -45,6 +56,7 @@ module V1
           requires :name, type: String
           optional :company_id, type: Integer
           optional :site_url, type: String
+          optional :categories, type: Array
         end
         put serializer: EventSerializer do
           declared_params = declared(params, include_missing: false)

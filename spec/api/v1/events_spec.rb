@@ -11,11 +11,15 @@ describe V1::Events do
 
   describe 'POST /api/v1/events' do
     let(:company) { create(:company) }
-    subject { post '/api/v1/events', params: { name: 'コミックマーケット', company_id: company[:id] } }
+    let(:category) { create(:category) }
+    subject { post '/api/v1/events',
+      params: { name: 'コミックマーケット', company_id: company.id, categories: [category.id] }
+    }
     it 'returns success' do
       subject
       expect(response).to be_successful
     end
+
     context 'params empty' do
       subject { post '/api/v1/events', params: {} }
       it 'return 400' do
@@ -27,10 +31,12 @@ describe V1::Events do
 
   describe 'PUT /api/v1/events/:id' do
     let(:event) { create(:event) }
-    subject { put "/api/v1/events/#{event[:id]}", params: { name: 'test' } }
+    let(:category) { create(:category) }
+    subject { put "/api/v1/events/#{event[:id]}", params: { name: 'test', categories: [category.id] } }
     it 'return success' do
       subject
-      expect(JSON.parse(response.body)['name']).to eq 'test'
+      res = JSON.parse(response.body)
+      expect(res['name']).to eq 'test'
     end
   end
 

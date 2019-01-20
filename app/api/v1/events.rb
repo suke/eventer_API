@@ -60,9 +60,19 @@ module V1
         end
         put serializer: EventSerializer do
           declared_params = declared(params, include_missing: false)
-          event = Event.find_by!(id: declared_params[:id])
-          event.update!(declared_params)
-          event
+          categories = declared_params.delete(:categories)
+          Event.transaction do
+            @event = Event.find_by!(id: declared_params[:id])
+            event_category = EventCategory.find_by( { event_id: @event.id } )
+            event_category.destroy_all if event_category.present?
+            if categories.present?
+              categories.each do |category|
+               @event.event_categories.build( { event_id: @event.id, category_id: category } )
+              end
+            end
+          end
+          @event.update!(declared_params)
+          @event
         end
 
         desc 'delete Event'

@@ -6,6 +6,9 @@ ruby '~> 2.5.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 gem 'grape'
+gem 'grape-active_model_serializers'
+gem 'active_model_serializers'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
@@ -17,7 +20,6 @@ gem 'config'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', require: 'rack/cors'
-gem 'active_model_serializers', '~> 0.10'
 gem 'sentry-raven'
 
 group :development, :test do

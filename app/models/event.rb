@@ -13,6 +13,9 @@
 class Event < ApplicationRecord
   belongs_to :company, optional: true
   has_many :event_schedules
+  has_many :event_categories
+  has_many :categories, through: :event_categories
+
   validates :name, presence: true,
                    uniqueness: true,
                    length: { maximum: 255 }

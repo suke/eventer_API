@@ -3,7 +3,7 @@ module V1
     version 'v1'
     format :json
     formatter :json, Grape::Formatter::ActiveModelSerializers
-    error_formatter :json, Grape::Formatter::ActiveModelSerializers
+    # error_formatter :json, Grape::Formatter::ActiveModelSerializers
 
     mount V1::Categories
     mount V1::Companies

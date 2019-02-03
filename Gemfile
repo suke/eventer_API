@@ -40,6 +40,7 @@ group :development do
   gem 'annotate'
   gem 'bullet'
   gem 'foreman'
+  gem 'rb-readline'
 end
 
 

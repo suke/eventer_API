@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Form from '../../containers/form/form_container'
+import { EventForm } from '../event/form'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 
@@ -16,7 +16,12 @@ class EventCreate extends Component {
     return (
       <Wrapper>
         <H2>イベント作成</H2>
-        <Form history={history} options={options} onSubmit={handleSubmit} />
+        <EventForm
+          history={history}
+          options={options}
+          handleSubmit={handleSubmit}
+          initialValues={{ id: '', name: '', company_id: '', site_url: '' }}
+        />
       </Wrapper>
     )
   }

@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToPros = dispatch => {
   return {
     fetchCompanies: () => dispatch(fetchCompanies()),
-    handleSubmit: (data, dispatch, { history }) => {
+    handleSubmit: (data, history) => {
       dispatch(createEvent({ data, history }))
     }
   }

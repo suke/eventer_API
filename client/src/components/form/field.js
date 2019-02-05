@@ -51,8 +51,32 @@ export const InputFieldV2 = ({
   <FormContainer>
     <Label>{label}</Label>
     <Input type="text" {...field} {...props} />
-    {touched[field.name] &&
-      errors[field.name] && <div>{errors[field.name]}</div>}
+    {touched[field.name] && errors[field.name] && (
+      <div>{errors[field.name]}</div>
+    )}
+  </FormContainer>
+)
+
+export const SelectFieldV2 = ({
+  field,
+  form: { touched, errors },
+  label,
+  options,
+  ...props
+}) => (
+  <FormContainer>
+    <Label>{label}</Label>
+    <Select {...field} {...props}>
+      <option value="">
+        Select a {label}
+        ...
+      </option>
+      {options.map(option => (
+        <option value={option.value} key={option.value}>
+          {option.name}
+        </option>
+      ))}
+    </Select>
   </FormContainer>
 )
 

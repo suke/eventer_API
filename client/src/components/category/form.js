@@ -21,7 +21,6 @@ export const CategoryForm = ({ history, handleSubmit, initialValues }) => {
       initialValues={initialValues}
       enableReinitialize={true}
       onSubmit={(values, { setSubmitting }) => {
-        console.log(values)
         setSubmitting(true);
         handleSubmit(values, history)
       }}

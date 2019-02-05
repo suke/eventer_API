@@ -16,7 +16,7 @@ const mapDispatchToPros = dispatch => {
   return {
     fetchCompaniesAndSelectCurrentCompany: id =>
       dispatch(fetchCompaniesAndSelectCurrentCompany(id)),
-    handleSubmit: (data, dispatch, { history }) => {
+    handleSubmit: (data, history) => {
       dispatch(updateCompany({ data, history }))
     }
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { CompanyForm } from '../../containers/form/company_form_container'
+import { CompanyForm } from '../company/form'
 import Wrapper from '../main_wrapper'
 
 class CompanyCreate extends Component {
@@ -10,7 +10,11 @@ class CompanyCreate extends Component {
     return (
       <Wrapper>
         <H2>企業作成</H2>
-        <CompanyForm history={history} onSubmit={handleSubmit} />
+        <CompanyForm
+          history={history}
+          handleSubmit={handleSubmit}
+          initialValues={{ id: '', name: '' }}
+        />
       </Wrapper>
     )
   }

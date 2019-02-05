@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CompanyForm } from '../../containers/form/company_form_container'
+import { CompanyForm } from '../company/form'
 import Wrapper from '../main_wrapper'
 
 class CompanyEdit extends Component {
@@ -9,10 +9,14 @@ class CompanyEdit extends Component {
   }
 
   render() {
-    const { handleSubmit, history } = this.props
+    const { currentCompany, handleSubmit, history } = this.props
     return (
       <Wrapper>
-        <CompanyForm history={history} onSubmit={handleSubmit} />
+        <CompanyForm
+          history={history}
+          handleSubmit={handleSubmit}
+          initialValues={currentCompany}
+        />
       </Wrapper>
     )
   }

@@ -50,29 +50,6 @@ export const EventForm = ({
   )
 }
 
-// const EventForm = ({ handleSubmit, options }) => (
-//   <Wrapper>
-//     <form onSubmit={handleSubmit}>
-//       <Field name="name" component={InputField} type="text" label="name" />
-//       <Field
-//         name="company_id"
-//         type="select"
-//         component={SelectField}
-//         label="company"
-//         options={options}
-//         initila
-//       />
-//       <Field
-//         name="site_url"
-//         component={InputField}
-//         type="text"
-//         label="site_url"
-//       />
-//       <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-//     </form>
-//   </Wrapper>
-// )
-
 const Wrapper = styled.div`
   padding: 20px;
   margin: 0 auto;

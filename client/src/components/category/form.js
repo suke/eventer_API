@@ -1,50 +1,37 @@
 import React from 'react'
 import styled from 'styled-components'
-// import * as ReduxForm from 'redux-form'
-import { InputField } from '../form/field'
 import { SubmitButton } from '../../components/button'
-import { Formik, Form, Field } from 'formik';
+import { Formik, Field } from 'formik'
 import { InputFieldV2 } from '../form/field'
-// const CategoryForm = ({ handleSubmit }) => (
-//   <Wrapper>
-//     <form onSubmit={handleSubmit}>
-//       <ReduxForm.Field name="name" component={InputField} type="text" label="name" />
-//       <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-//     </form>
-//   </Wrapper>
-// )
 
 export const CategoryForm = ({ history, handleSubmit, initialValues }) => {
   return (
     <Wrapper>
       <Formik
-      initialValues={initialValues}
-      enableReinitialize={true}
-      onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(true);
-        handleSubmit(values, history)
-      }}
-      render={({
-        errors,
-        touched,
-        handleSubmit,
-        isSubmitting
-      }) => (
-        <form onSubmit={handleSubmit}>
-          <Field label="Name" name="name" placeholder="name" component={InputFieldV2} />
-          {touched.name &&
-            errors.name && <div>{errors.name}</div>}
-          <StyledSubmitButton type="submit" disabled={isSubmitting}>
-            Submit
-          </StyledSubmitButton>
-        </form>
-      )}
-      >
-      </Formik>
+        initialValues={initialValues}
+        enableReinitialize={true}
+        onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(true)
+          handleSubmit(values, history)
+        }}
+        render={({ errors, touched, handleSubmit, isSubmitting }) => (
+          <form onSubmit={handleSubmit}>
+            <Field
+              label="Name"
+              name="name"
+              placeholder="name"
+              component={InputFieldV2}
+            />
+            {touched.name && errors.name && <div>{errors.name}</div>}
+            <StyledSubmitButton type="submit" disabled={isSubmitting}>
+              Submit
+            </StyledSubmitButton>
+          </form>
+        )}
+      />
     </Wrapper>
   )
 }
-
 
 const Wrapper = styled.div`
   padding: 20px;

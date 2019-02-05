@@ -26,7 +26,7 @@ module V1
           @event = Event.new(declared_params)
           if categories.present?
             categories.each do |category|
-              @event.event_categories.build( { event_id: @event.id, category_id: category } )
+              @event.event_categories.build(event_id: @event.id, category_id: category)
             end
           end
         end
@@ -63,11 +63,11 @@ module V1
           categories = declared_params.delete(:categories)
           Event.transaction do
             @event = Event.find_by!(id: declared_params[:id])
-            event_category = EventCategory.find_by( { event_id: @event.id } )
+            event_category = EventCategory.where( event_id: @event.id )
             event_category.destroy_all if event_category.present?
             if categories.present?
               categories.each do |category|
-               @event.event_categories.build( { event_id: @event.id, category_id: category } )
+                @event.event_categories.build(event_id: @event.id, category_id: category)
               end
             end
           end

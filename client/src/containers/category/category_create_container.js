@@ -8,7 +8,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToPros = dispatch => {
   return {
-    handleSubmit: (data, dispatch, { history }) => {
+    handleSubmit: (data, history) => {
       dispatch(createCategory({ data, history }))
     }
   }

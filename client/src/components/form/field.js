@@ -42,6 +42,20 @@ export const DatePickerField = ({ input, label, meta: { touched, error } }) => (
   </FormContainer>
 )
 
+export const InputFieldV2 = ({
+  field,
+  form: { touched, errors },
+  label,
+  ...props
+}) => (
+  <FormContainer>
+    <Label>{label}</Label>
+    <Input type="text" {...field} {...props} />
+    {touched[field.name] &&
+      errors[field.name] && <div>{errors[field.name]}</div>}
+  </FormContainer>
+)
+
 const FormContainer = styled.div`
   padding: 10px;
 `

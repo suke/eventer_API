@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ReactTable from 'react-table'
 import moment from 'moment'
 import Wrapper from '../main_wrapper'
-import Button, { EditButton } from '../button'
+import { EditButton, CreateButton } from '../button'
 import Link from '../edit_button_link'
 
 class Event extends Component {
@@ -32,11 +32,15 @@ const EventPresenter = ({ event, schedules }) => {
         <H2>{event.name}</H2>
         <Header>
           <H3>スケジュール</H3>
-          <CreateButton width="60px" height="30px" borderColoer="#666">
-            <Link to={`/events/${event.id}/schedules/create`} height="26px">
+          <StyledCreateButton width="60px" height="30px">
+            <Link
+              to={`/events/${event.id}/schedules/create`}
+              height="26px"
+              color="white"
+            >
               CreateSchedule
             </Link>
-          </CreateButton>
+          </StyledCreateButton>
         </Header>
         <ReactTable
           data={schedules}
@@ -103,7 +107,7 @@ const H3 = styled.h3`
   margin-bottom: 10px;
 `
 
-const CreateButton = styled(Button)`
+const StyledCreateButton = styled(CreateButton)`
   margin-right: 40px;
 `
 

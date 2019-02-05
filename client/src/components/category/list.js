@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ReactTable from 'react-table'
 import moment from 'moment'
 import Wrapper from '../main_wrapper'
-import Button, { EditButton } from '../button'
+import { EditButton, CreateButton } from '../button'
 import ButtonLink from '../edit_button_link'
 
 class CategoryList extends Component {
@@ -18,11 +18,11 @@ class CategoryList extends Component {
       <Wrapper>
         <Header>
           <H2>カテゴリー一覧</H2>
-          <CreateButton width="60px" height="30px" borderColoer="#666">
-            <ButtonLink to={`/categories/create`} height="26px">
+          <StyledCreateButton width="60px" height="30px">
+            <ButtonLink to={`/categories/create`} height="26px" color="white">
               Create
             </ButtonLink>
-          </CreateButton>
+          </StyledCreateButton>
         </Header>
         <ReactTable
           data={categories}
@@ -89,7 +89,7 @@ const Header = styled.div`
   justify-content: space-between;
 `
 
-const CreateButton = styled(Button)`
+const StyledCreateButton = styled(CreateButton)`
   margin-right: 40px;
 `
 

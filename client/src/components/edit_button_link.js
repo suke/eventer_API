@@ -7,6 +7,10 @@ const ButtonLink = styled(Link)`
   height: 100%;
   line-height: ${props => props.height};
   display: inline-block;
+  color: ${props => props.color};
 `
+ButtonLink.defaultProps = {
+  color: 'black'
+}
 
 export default ButtonLink

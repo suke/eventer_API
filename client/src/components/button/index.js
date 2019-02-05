@@ -8,12 +8,20 @@ const Button = styled.button`
   border: 2px solid ${props => props.borderColoer};
 `
 
-export const SubmitButton = styled(Button)``
+export const SubmitButton = styled(Button)`
+  color: white;
+  background-color: #1ea1ff;
+`
+
+export const CreateButton = styled(Button)`
+  color: white;
+  background-color: #1ea1ff;
+`
 
 SubmitButton.defaultProps = {
   width: '120px',
   height: '40px',
-  borderColoer: '#666'
+  borderColor: '#666'
 }
 
 export const EditButton = styled(Button)`

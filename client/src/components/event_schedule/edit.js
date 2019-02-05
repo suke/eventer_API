@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScheduleForm } from '../../containers/form/schedule_form_container'
+import { ScheduleForm } from '../event_schedule/form'
 import Wrapper from '../main_wrapper'
 
 class EventScheduleEdit extends Component {
@@ -9,14 +9,14 @@ class EventScheduleEdit extends Component {
   }
 
   render() {
-    const { match, handleSubmit, history } = this.props
-    const event_id = match.params.event_id
+    const { schedule, match, handleSubmit, history } = this.props
+    const initialValues = { ...schedule, event_id: match.params.event_id }
     return (
       <Wrapper>
         <ScheduleForm
           history={history}
-          onSubmit={handleSubmit}
-          event_id={event_id}
+          handleSubmit={handleSubmit}
+          initialValues={initialValues}
         />
       </Wrapper>
     )

@@ -8,9 +8,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToPros = dispatch => {
   return {
-    handleSubmit: (data, dispatch, { event_id, history }) => {
-      const newData = { event_id: +event_id, ...data }
-      dispatch(createEventSchedule({ data: newData, history }))
+    handleSubmit: (data, history) => {
+      dispatch(createEventSchedule({ data, history }))
     }
   }
 }

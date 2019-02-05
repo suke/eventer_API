@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { ScheduleForm } from '../../containers/form/schedule_form_container'
+import { ScheduleForm } from '../event_schedule/form'
 import Wrapper from '../main_wrapper'
 
 class EventScheduleCreate extends Component {
@@ -12,8 +12,15 @@ class EventScheduleCreate extends Component {
         <H2>スケジュール作成</H2>
         <ScheduleForm
           history={history}
-          onSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
           event_id={event_id}
+          initialValues={{
+            id: '',
+            event_id: event_id,
+            started_at: '',
+            ended_at: '',
+            address: ''
+          }}
         />
       </Wrapper>
     )

@@ -6,12 +6,12 @@ import 'dayjs/locale/es'
 dayjs.locale('ja')
 
 export default ({ value, onChange }) => {
-  const date = dayjs(value).toDate()
+  const date = value ? dayjs(value).toDate() : null
   return (
     <StyledDatePicker
-      selected={date || null}
+      selected={date}
       onChange={onChange}
-      dateFormat="YYYY/MM/dd hh:mm:ss"
+      dateFormat="YYYY/MM/dd hh:mm"
       showTimeSelect
       timeIntervals={10}
       timeCaption="time"

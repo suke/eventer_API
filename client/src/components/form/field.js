@@ -80,6 +80,19 @@ export const SelectFieldV2 = ({
   </FormContainer>
 )
 
+export const DatePickerFieldV2 = ({
+  field,
+  form: { touched, errors },
+  label,
+  handleChange,
+  ...props
+}) => (
+  <FormContainer>
+    <Label>{label}</Label>
+    <DatePicker {...field} {...props} onChange={handleChange} />
+  </FormContainer>
+)
+
 const FormContainer = styled.div`
   padding: 10px;
 `

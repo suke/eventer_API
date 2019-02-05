@@ -32,18 +32,6 @@ class CategoryList extends Component {
               accessor: 'name'
             },
             {
-              Header: 'Created_at',
-              id: 'created_at',
-              accessor: category =>
-                moment(category.created_at).format('YYYY-MM-DD h:mm:ss')
-            },
-            {
-              Header: 'Updated_at',
-              id: 'updated_at',
-              accessor: category =>
-                moment(category.updated_at).format('YYYY-MM-DD h:mm:ss')
-            },
-            {
               Header: 'Edit',
               Cell: ({ original: category }) => (
                 <EditButton width="60px" height="30px" borderColoer="#666">

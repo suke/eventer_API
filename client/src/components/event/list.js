@@ -36,18 +36,6 @@ class EventList extends Component {
               accessor: 'site_url'
             },
             {
-              Header: 'Created_at',
-              id: 'created_at',
-              accessor: event =>
-                moment(event.created_at).format('YYYY-MM-DD h:mm:ss')
-            },
-            {
-              Header: 'Updated_at',
-              id: 'updated_at',
-              accessor: event =>
-                moment(event.updated_at).format('YYYY-MM-DD h:mm:ss')
-            },
-            {
               Header: 'Show',
               Cell: ({ original: event }) => (
                 <EditButton width="60px" height="30px" borderColoer="#666">

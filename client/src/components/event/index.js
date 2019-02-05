@@ -58,18 +58,6 @@ const EventPresenter = ({ event, schedules }) => {
                 moment(schedule.ended_at).format('YYYY-MM-DD h:mm:ss')
             },
             {
-              Header: 'Created_at',
-              id: 'created_at',
-              accessor: schedule =>
-                moment(schedule.created_at).format('YYYY-MM-DD h:mm:ss')
-            },
-            {
-              Header: 'Updated_at',
-              id: 'updated_at',
-              accessor: schedule =>
-                moment(schedule.updated_at).format('YYYY-MM-DD h:mm:ss')
-            },
-            {
               Header: 'Address',
               accessor: 'address'
             },

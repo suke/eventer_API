@@ -13,7 +13,8 @@ module.exports = {
     publicPath: 'http://localhost:8000/'
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js|jsx$/,
         loader: 'babel-loader',
         exclude: /node_modules/

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { CategoryForm } from '../../containers/form/category_form_container'
 import Wrapper from '../main_wrapper'
-
+import { CategoryForm } from './form.js'
 class CategoryEdit extends Component {
   componentDidMount() {
     const { fetchCategoriesAndSelectCurrentCategory, match } = this.props
@@ -9,10 +8,10 @@ class CategoryEdit extends Component {
   }
 
   render() {
-    const { handleSubmit, history } = this.props
+    const { currentCategory, handleSubmit, history } = this.props
     return (
       <Wrapper>
-        <CategoryForm history={history} onSubmit={handleSubmit} />
+        <CategoryForm history={history} handleSubmit={handleSubmit} initialValues={currentCategory} />
       </Wrapper>
     )
   }

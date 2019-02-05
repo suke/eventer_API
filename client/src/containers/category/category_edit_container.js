@@ -5,10 +5,9 @@ import {
 } from '../../modules/category'
 import CategoryEdit from '../../components/category/edit'
 
-const mapStateToProps = ({ companyReducer }) => {
+const mapStateToProps = ({ categoryReducer }) => {
   return {
-    companies: companyReducer.companies,
-    currentCompany: companyReducer.currentCompany
+    currentCategory: categoryReducer.currentCategory,
   }
 }
 
@@ -16,7 +15,7 @@ const mapDispatchToPros = dispatch => {
   return {
     fetchCategoriesAndSelectCurrentCategory: id =>
       dispatch(fetchCategoriesAndSelectCurrentCategory(id)),
-    handleSubmit: (data, dispatch, { history }) => {
+    handleSubmit: (data, history ) => {
       dispatch(updateCategory({ data, history }))
     }
   }

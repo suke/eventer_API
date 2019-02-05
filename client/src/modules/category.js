@@ -113,7 +113,7 @@ export default function categoryReducer(state = initialState, action) {
       return {
         ...state,
         currentCategory: action.payload.data,
-        categories: newCompanies
+        categories: newCategories
       }
     case DELETE_CATEGORY_SUCCESS:
       return {

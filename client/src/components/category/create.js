@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { CategoryFormV2 } from './form.js'
+import { CategoryForm } from './form.js'
 import Wrapper from '../main_wrapper'
 
 class CategoryCreate extends Component {
@@ -9,7 +9,7 @@ class CategoryCreate extends Component {
     return (
       <Wrapper>
         <H2>カテゴリー作成</H2>
-        <CategoryFormV2 history={history} handleSubmit={handleSubmit} />
+        <CategoryForm history={history} handleSubmit={handleSubmit} initialValues={ {id: '', name: ''} } />
       </Wrapper>
     )
   }

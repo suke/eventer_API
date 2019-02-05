@@ -1,27 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
-import * as ReduxForm from 'redux-form'
+// import * as ReduxForm from 'redux-form'
 import { InputField } from '../form/field'
 import { SubmitButton } from '../../components/button'
 import { Formik, Form, Field } from 'formik';
 import { InputFieldV2 } from '../form/field'
-const CategoryForm = ({ handleSubmit }) => (
-  <Wrapper>
-    <form onSubmit={handleSubmit}>
-      <ReduxForm.Field name="name" component={InputField} type="text" label="name" />
-      <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-    </form>
-  </Wrapper>
-)
+// const CategoryForm = ({ handleSubmit }) => (
+//   <Wrapper>
+//     <form onSubmit={handleSubmit}>
+//       <ReduxForm.Field name="name" component={InputField} type="text" label="name" />
+//       <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+//     </form>
+//   </Wrapper>
+// )
 
-export const CategoryFormV2 = ({ history, handleSubmit }) => {
+export const CategoryForm = ({ history, handleSubmit, initialValues }) => {
   return (
     <Wrapper>
       <Formik
-      initialValues={{
-        id: '',
-        name: ''
-      }}
+      initialValues={initialValues}
+      enableReinitialize={true}
       onSubmit={(values, { setSubmitting }) => {
         console.log(values)
         setSubmitting(true);
@@ -34,7 +32,6 @@ export const CategoryFormV2 = ({ history, handleSubmit }) => {
         isSubmitting
       }) => (
         <form onSubmit={handleSubmit}>
-          <Field type="hidden" name="id" />
           <Field label="Name" name="name" placeholder="name" component={InputFieldV2} />
           {touched.name &&
             errors.name && <div>{errors.name}</div>}

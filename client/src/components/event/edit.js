@@ -2,11 +2,11 @@ import React from 'react'
 import { EventForm } from '../event/form'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
-import { useFirstMount } from '../../custom_fooks/index';
+import { useOnMount } from '../../custom_fooks/index';
 
 function EventEdit(props) {
 
-  useFirstMount(props, (props) => {
+  useOnMount(props, (props) => {
     if(isFirstRef.current) {
       const {
         currentEvent,
@@ -21,7 +21,6 @@ function EventEdit(props) {
       fetchCompanies()
       fetchCategories()
       currentEvent(event)
-      isFirstRef.current = false
     }
   })
 

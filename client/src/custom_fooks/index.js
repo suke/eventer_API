@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export function useFirstMount(currentState, callback) {
+export function useOnMount(currentState, callback) {
   const isFirstMount = useRef(true);
   const lastStateRet = useRef()
 

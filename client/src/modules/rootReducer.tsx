@@ -1,15 +1,13 @@
 import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
-import eventReducer from '../modules/event'
-import companyReducer from '../modules/company'
-import categoryReducer from '../modules/category'
-import eventScheduleReducer from '../modules/event_schedule'
+import eventReducer from './event'
+import companyReducer from './company'
+import categoryReducer from './category'
+import eventScheduleReducer from './event_schedule'
 const reducer = combineReducers({
   eventReducer,
   companyReducer,
   categoryReducer,
-  eventScheduleReducer,
-  form: formReducer
+  eventScheduleReducer
 })
 
 export default reducer

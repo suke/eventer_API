@@ -1,5 +1,4 @@
 import API from './base'
-
 export function createCompany({ name }: { name: string }) {
   return API.post('/companies', {
     name

@@ -1,3 +1,6 @@
+import { Category } from '../interfaces/category'
+import { History } from 'history'
+
 // action type
 export const CREATE_CATEGORY = 'CREATE_CATEGORY'
 export const CREATE_CATEGORY_SUCCESS = 'CREATE_CATEGORY_SUCCESS'
@@ -19,81 +22,110 @@ export const CURRENT_CATEGORY = 'CURRENT_CATEGORY'
 export const FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY =
   'FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY'
 // action creators
-export const createCategory = ({ data, history }) => ({
-  type: CREATE_CATEGORY,
+export const createCategory = ({
+  data,
+  history
+}: {
+  data: Category
+  history: History
+}) => ({
+  type: CREATE_CATEGORY as typeof CREATE_CATEGORY,
   payload: {
     data,
     history
   }
 })
 
-export const createCategorySuccess = data => ({
-  type: CREATE_CATEGORY_SUCCESS,
+export const createCategorySuccess = (data: Category) => ({
+  type: CREATE_CATEGORY_SUCCESS as typeof CREATE_CATEGORY_SUCCESS,
   payload: {
     data
   }
 })
 
-export const updateCategory = ({ data, history }) => ({
-  type: UPDATE_CATEGORY,
+export const updateCategory = ({
+  data,
+  history
+}: {
+  data: Category
+  history: History
+}) => ({
+  type: UPDATE_CATEGORY as typeof UPDATE_CATEGORY,
   payload: {
     data,
     history
   }
 })
 
-export const updateCategorySuccess = data => ({
-  type: UPDATE_CATEGORY_SUCCESS,
+export const updateCategorySuccess = (data: Category) => ({
+  type: UPDATE_CATEGORY_SUCCESS as typeof UPDATE_CATEGORY_SUCCESS,
   payload: {
     data
   }
 })
 
 export const fetchCategories = () => ({
-  type: FETCH_CATEGORIES
+  type: FETCH_CATEGORIES as typeof FETCH_CATEGORIES
 })
 
-export const fetchCategoriesSuccess = data => ({
-  type: FETCH_CATEGORIES_SUCCESS,
+export const fetchCategoriesSuccess = (data: Array<Category>) => ({
+  type: FETCH_CATEGORIES_SUCCESS as typeof FETCH_CATEGORIES_SUCCESS,
   payload: {
     data
   }
 })
 
-export const fetchCategoriesAndSelectCurrentCategory = id => ({
-  type: FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY,
+export const fetchCategoriesAndSelectCurrentCategory = (id: number) => ({
+  type: FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY as typeof FETCH_CATEGORIES_AND_SELECT_CURRENT_CATEGORY,
   payload: {
     id
   }
 })
 
-export const deleteCategory = id => ({
-  type: DELETE_CATEGORY,
+export const deleteCategory = (id: number) => ({
+  type: DELETE_CATEGORY as typeof DELETE_CATEGORY,
   payload: {
     id
   }
 })
 
-export const deleteCategorySuccess = data => ({
-  type: DELETE_CATEGORY_SUCCESS,
+export const deleteCategorySuccess = (data: Category) => ({
+  type: DELETE_CATEGORY_SUCCESS as typeof DELETE_CATEGORY_SUCCESS,
   payload: {
     data
   }
 })
 
-export const currentCategory = data => ({
-  type: CURRENT_CATEGORY,
+export const currentCategory = (data: Category) => ({
+  type: CURRENT_CATEGORY as typeof CURRENT_CATEGORY,
   payload: {
     data
   }
 })
 
-const initialState = {
-  currentCategory: {},
+type Actions =
+  | ReturnType<typeof createCategory>
+  | ReturnType<typeof createCategorySuccess>
+  | ReturnType<typeof updateCategory>
+  | ReturnType<typeof updateCategorySuccess>
+  | ReturnType<typeof fetchCategories>
+  | ReturnType<typeof fetchCategoriesSuccess>
+  | ReturnType<typeof fetchCategoriesAndSelectCurrentCategory>
+  | ReturnType<typeof deleteCategory>
+  | ReturnType<typeof deleteCategorySuccess>
+  | ReturnType<typeof currentCategory>
+
+interface CategoryState {
+  currentCategory: Category
+  categories: Array<Category>
+}
+
+const initialState: CategoryState = {
+  currentCategory: { id: null, name: '' },
   categories: []
 }
 
-export default function categoryReducer(state = initialState, action) {
+export default function categoryReducer(state = initialState, action: Actions) {
   switch (action.type) {
     case CURRENT_CATEGORY:
       return { ...state, currentCategory: { ...action.payload.data } }

@@ -5,12 +5,15 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
-    application: './src/application.js'
+    application: './src/application.tsx'
   },
   output: {
     path: path.join(__dirname, '../../../app/assets/javascripts'),
     filename: '[name].js',
     publicPath: 'http://localhost:8000/'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
   module: {
     rules: [
@@ -18,6 +21,14 @@ module.exports = {
         test: /\.js|jsx$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      { test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
+      },
+      {
+        test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre"
       },
       {
         test: /\.css$/,

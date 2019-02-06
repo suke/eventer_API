@@ -7,21 +7,19 @@ import { useOnMount } from '../../custom_fooks/index';
 function EventEdit(props) {
 
   useOnMount(props, (props) => {
-    if(isFirstRef.current) {
-      const {
-        currentEvent,
-        fetchCompanies,
-        fetchCategories,
-        events,
-        match
-      } = props
-      const event = events.find(event => {
-        return event.id === parseInt(match.params.id)
-      })
-      fetchCompanies()
-      fetchCategories()
-      currentEvent(event)
-    }
+    const {
+      currentEvent,
+      fetchCompanies,
+      fetchCategories,
+      events,
+      match
+    } = props
+    const event = events.find(event => {
+      return event.id === parseInt(match.params.id)
+    })
+    fetchCompanies()
+    fetchCategories()
+    currentEvent(event)
   })
 
   const { event, companies, categories, handleSubmit, history } = props

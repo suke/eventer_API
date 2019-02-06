@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
-import { ScheduleForm } from '../event_schedule/form'
+import { ScheduleForm } from './form'
 import Wrapper from '../main_wrapper'
 
-class EventScheduleCreate extends Component {
+class EventScheduleCreate extends React.Component<any> {
   render() {
     const { match, handleSubmit, history } = this.props
     const event_id = match.params.event_id
@@ -13,7 +13,6 @@ class EventScheduleCreate extends Component {
         <ScheduleForm
           history={history}
           handleSubmit={handleSubmit}
-          event_id={event_id}
           initialValues={{
             id: '',
             event_id: event_id,

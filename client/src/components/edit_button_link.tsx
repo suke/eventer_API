@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const ButtonLink = styled(Link)`
+interface ButtonLinkProps {
+  height: string
+  color?: string
+}
+
+const ButtonLink = styled(Link)<ButtonLinkProps>`
   padding: 0 10px;
   width: 100%;
   height: 100%;

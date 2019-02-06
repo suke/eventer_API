@@ -1,46 +1,46 @@
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import DatePicker from './date_picker'
-export const InputField = ({
-  input,
-  type = 'text',
-  label,
-  meta: { touched, error }
-}) => (
-  <FormContainer>
-    <Label>{label}</Label>
-    <Input {...input} type={type} />
-  </FormContainer>
-)
+// export const InputField = ({
+//   input,
+//   type = 'text',
+//   label,
+//   meta: { touched, error }
+// }) => (
+//   <FormContainer>
+//     <Label>{label}</Label>
+//     <Input {...input} type={type} />
+//   </FormContainer>
+// )
 
-export const SelectField = ({
-  input,
-  label,
-  options = [],
-  meta: { touched, error }
-}) => (
-  <FormContainer>
-    <Label>{label}</Label>
-    <Select {...input}>
-      <option value="">
-        Select a {label}
-        ...
-      </option>
-      {options.map(option => (
-        <option value={option.value} key={option.value}>
-          {option.name}
-        </option>
-      ))}
-    </Select>
-  </FormContainer>
-)
+// export const SelectField = ({
+//   input,
+//   label,
+//   options = [],
+//   meta: { touched, error }
+// }) => (
+//   <FormContainer>
+//     <Label>{label}</Label>
+//     <Select {...input}>
+//       <option value="">
+//         Select a {label}
+//         ...
+//       </option>
+//       {options.map(option => (
+//         <option value={option.value} key={option.value}>
+//           {option.name}
+//         </option>
+//       ))}
+//     </Select>
+//   </FormContainer>
+// )
 
-export const DatePickerField = ({ input, label, meta: { touched, error } }) => (
-  <FormContainer>
-    <Label>{label}</Label>
-    <DatePicker {...input} />
-  </FormContainer>
-)
+// export const DatePickerField = ({ input, label, meta: { touched, error } }) => (
+//   <FormContainer>
+//     <Label>{label}</Label>
+//     <DatePicker {...input} />
+//   </FormContainer>
+// )
 
 export const InputFieldV2 = ({
   field,

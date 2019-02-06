@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import DatePicker from 'react-datepicker'
 import styled from 'styled-components'
 import dayjs from 'dayjs'

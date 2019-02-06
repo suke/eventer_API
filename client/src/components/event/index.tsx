@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
-import moment from 'moment'
+import * as moment from 'moment'
 import Wrapper from '../main_wrapper'
 import { EditButton, CreateButton } from '../button'
 import Link from '../edit_button_link'
 
-class Event extends Component {
+class Event extends React.Component<any> {
   componentDidMount() {
     const { match, fetchEventAndSchedule } = this.props
     fetchEventAndSchedule(match.params.id)

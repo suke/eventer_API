@@ -33,7 +33,7 @@ class CategoryList extends React.Component<any> {
             {
               Header: 'Edit',
               Cell: ({ original: category }) => (
-                <EditButton width="60px" height="30px" borderColoer="#666">
+                <EditButton width="60px" height="30px" borderColor="#666">
                   <ButtonLink
                     to={`/categories/${category.id}/edit`}
                     height="26px"
@@ -50,7 +50,7 @@ class CategoryList extends React.Component<any> {
                   <EditButton
                     width="60px"
                     height="30px"
-                    borderColoer="#666"
+                    borderColor="#666"
                     onClick={() => onClickDelete(category.id)}
                   >
                     Delete

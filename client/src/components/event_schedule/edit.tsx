@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { ScheduleForm } from '../event_schedule/form'
+import * as React from 'react'
+import { ScheduleForm } from './form'
 import Wrapper from '../main_wrapper'
 
-class EventScheduleEdit extends Component {
+class EventScheduleEdit extends React.Component<any> {
   componentDidMount() {
     const { fetchSchedule, match } = this.props
     fetchSchedule(match.params.event_id, match.params.id)

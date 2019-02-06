@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { CompanyForm } from '../company/form'
+import * as React from 'react'
+import { CompanyForm } from './form'
 import Wrapper from '../main_wrapper'
 
-class CompanyEdit extends Component {
+class CompanyEdit extends React.Component<any> {
   componentDidMount() {
     const { fetchCompaniesAndSelectCurrentCompany, match } = this.props
     fetchCompaniesAndSelectCurrentCompany(parseInt(match.params.id, 10))

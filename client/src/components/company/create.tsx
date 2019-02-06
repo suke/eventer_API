@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
-import { CompanyForm } from '../company/form'
+import { CompanyForm } from './form'
 import Wrapper from '../main_wrapper'
 
-class CompanyCreate extends Component {
+class CompanyCreate extends React.Component<any> {
   render() {
     const { handleSubmit, history } = this.props
     console.log(history)

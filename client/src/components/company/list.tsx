@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
-import moment from 'moment'
 import Wrapper from '../main_wrapper'
 import { EditButton, CreateButton } from '../button'
 import ButtonLink from '../edit_button_link'
 
-class CompanyList extends Component {
+class CompanyList extends React.Component<any> {
   componentDidMount() {
     const { fetchCompanies } = this.props
     fetchCompanies()
@@ -35,7 +34,7 @@ class CompanyList extends Component {
             {
               Header: 'Edit',
               Cell: ({ original: company }) => (
-                <EditButton width="60px" height="30px" borderColoer="#666">
+                <EditButton width="60px" height="30px" borderColor="#666">
                   <ButtonLink
                     to={`/companies/${company.id}/edit`}
                     height="26px"
@@ -52,7 +51,7 @@ class CompanyList extends Component {
                   <EditButton
                     width="60px"
                     height="30px"
-                    borderColoer="#666"
+                    borderColor="#666"
                     onClick={() => onClickDelete(company.id)}
                   >
                     Delete

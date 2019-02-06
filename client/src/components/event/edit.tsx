@@ -1,12 +1,11 @@
-import React from 'react'
-import { EventForm } from '../event/form'
+import * as React from 'react'
+import { EventForm } from './form'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
-import { useOnMount } from '../../custom_fooks/index';
+import { useOnMount } from '../../custom_fooks/index'
 
 function EventEdit(props) {
-
-  useOnMount(props, (props) => {
+  useOnMount(props, props => {
     const {
       currentEvent,
       fetchCompanies,
@@ -30,7 +29,6 @@ function EventEdit(props) {
       <EventForm
         history={history}
         options={options}
-        categoryOptions={categoryOptions}
         handleSubmit={handleSubmit}
         initialValues={event}
       />

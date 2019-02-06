@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
-import { EventForm } from '../event/form'
+import { EventForm } from './form'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 
-class EventCreate extends Component {
+class EventCreate extends React.Component<any> {
   componentDidMount() {
     const { fetchCompanies } = this.props
     fetchCompanies()

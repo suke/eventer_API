@@ -10,12 +10,10 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false,
-    "strictNullChecks": true,
+    "strictNullChecks": false
   },
-  "include": [
-    "./src"
-  ],
-  "exclude": [
-    "node_modules",
-  ]
+  "baseUrl": "types",
+  "typeRoots": ["types"],
+  "include": ["./src"],
+  "exclude": ["node_modules"]
 }

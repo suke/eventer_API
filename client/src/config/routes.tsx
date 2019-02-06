@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import EventList from '../containers/event/event_list_container'
 import Event from '../containers/event/event_container'
 import EventCreate from '../containers/event/event_create_container'

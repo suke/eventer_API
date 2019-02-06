@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -17,7 +17,7 @@ const items = [
   }
 ]
 
-const Sidebar = ({ className }) => (
+const Sidebar = ({ className }: { className?: string }) => (
   <SidebarWrapper className={className}>
     <ul>
       {items.map((item, idx) => {

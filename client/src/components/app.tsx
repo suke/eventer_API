@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import { ToastContainer } from 'react-toastify'
 import routes from '../config/routes'
@@ -10,14 +10,16 @@ const App = () => (
     <Wrapper>
       <StyledSidebar />
       <MainContainer>
-        {routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.component}
-          />
-        ))}
+        <Switch>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.component}
+            />
+          ))}
+        </Switch>
       </MainContainer>
       <ToastContainer autoClose={2000} />
     </Wrapper>

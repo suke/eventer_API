@@ -20,17 +20,17 @@ const routes = [
   },
   {
     path: '/events/:id/show',
-    exact: true,
+    exact: false,
     component: props => <Event {...props} />
   },
   {
     path: '/events/create',
-    exact: true,
+    exact: false,
     component: props => <EventCreate {...props} />
   },
   {
     path: '/events/:id/edit',
-    exact: true,
+    exact: false,
     component: props => <EventEdit {...props} />
   },
   {
@@ -40,12 +40,12 @@ const routes = [
   },
   {
     path: '/companies/create',
-    exact: true,
+    exact: false,
     component: props => <CompanyCreate {...props} />
   },
   {
     path: '/companies/:id/edit',
-    exact: true,
+    exact: false,
     component: props => <CompanyEdit {...props} />
   },
   {
@@ -55,22 +55,22 @@ const routes = [
   },
   {
     path: '/categories/create',
-    exact: true,
+    exact: false,
     component: props => <CategoryCreate {...props} />
   },
   {
     path: '/categories/:id/edit',
-    exact: true,
+    exact: false,
     component: props => <CategoryEdit {...props} />
   },
   {
     path: '/events/:event_id/schedules/create',
-    exact: true,
+    exact: false,
     component: props => <EventScheduleCreate {...props} />
   },
   {
     path: '/events/:event_id/schedules/:id/edit',
-    exact: true,
+    exact: false,
     component: props => <EventScheduleEdit {...props} />
   }
 ]

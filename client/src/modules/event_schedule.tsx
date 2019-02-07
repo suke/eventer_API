@@ -1,3 +1,5 @@
+import { EventSchedule } from '../interfaces/event'
+
 // action type
 export const CREATE_EVENT_SCHEDULE = 'CREATE_EVENT_SCHEDULE'
 export const CREATE_EVENT_SCHEDULE_SUCCESS = 'CREATE_EVENT_SCHEDULE_SUCCESS'
@@ -17,67 +19,81 @@ export const FETCH_EVENT_SCHEDULE = 'FETCH_EVENT_SCHEDULE'
 export const FETCH_EVENT_SCHEDULE_SUCCESS = 'FETCH_EVENT_SCHEDULE_SUCCESS'
 
 // action creators
-export const createEventSchedule = ({ data, history }) => ({
-  type: CREATE_EVENT_SCHEDULE,
+export const createEventSchedule = ({
+  data,
+  history
+}: {
+  data: EventSchedule
+  history: History
+}) => ({
+  type: CREATE_EVENT_SCHEDULE as typeof CREATE_EVENT_SCHEDULE,
   payload: {
     data,
     history
   }
 })
 
-export const createEventScheduleSuccess = data => ({
-  type: CREATE_EVENT_SCHEDULE_SUCCESS,
+export const createEventScheduleSuccess = (data: EventSchedule) => ({
+  type: CREATE_EVENT_SCHEDULE_SUCCESS as typeof CREATE_EVENT_SCHEDULE_SUCCESS,
   payload: {
     data
   }
 })
 
-export const updateEventSchedule = ({ data, history }) => ({
-  type: UPDATE_EVENT_SCHEDULE,
+export const updateEventSchedule = ({
+  data,
+  history
+}: {
+  data: EventSchedule
+  history: History
+}) => ({
+  type: UPDATE_EVENT_SCHEDULE as typeof UPDATE_EVENT_SCHEDULE,
   payload: {
     data,
     history
   }
 })
 
-export const updateEventScheduleSuccess = data => ({
-  type: UPDATE_EVENT_SCHEDULE_SUCCESS,
+export const updateEventScheduleSuccess = (data: EventSchedule) => ({
+  type: UPDATE_EVENT_SCHEDULE_SUCCESS as typeof UPDATE_EVENT_SCHEDULE_SUCCESS,
   payload: {
     data
   }
 })
 
-export const deleteEventSchedule = id => ({
-  type: DELETE_EVENT_SCHEDULE,
+export const deleteEventSchedule = (id: number) => ({
+  type: DELETE_EVENT_SCHEDULE as typeof DELETE_EVENT_SCHEDULE,
   payload: {
     id
   }
 })
 
-export const deleteEventScheduleSuccess = data => ({
-  type: DELETE_EVENT_SCHEDULE_SUCCESS,
+export const deleteEventScheduleSuccess = (data: EventSchedule) => ({
+  type: DELETE_EVENT_SCHEDULE_SUCCESS as typeof DELETE_EVENT_SCHEDULE_SUCCESS,
   payload: {
     data
   }
 })
 
-export const currentEventSchedule = data => ({
-  type: CURRENT_EVENT_SCHEDULE,
+export const currentEventSchedule = (data: EventSchedule) => ({
+  type: CURRENT_EVENT_SCHEDULE as typeof CURRENT_EVENT_SCHEDULE,
   payload: {
     data
   }
 })
 
-export const fetchEventSchedules = () => ({ type: FETCH_EVENT_SCHEDULES })
-export const fetchEventSchedulesSuccess = data => ({
-  type: FETCH_EVENT_SCHEDULES_SUCCESS,
+export const fetchEventSchedules = () => ({
+  type: FETCH_EVENT_SCHEDULES as typeof FETCH_EVENT_SCHEDULES
+})
+export const fetchEventSchedulesSuccess = (data: Array<EventSchedule>) => ({
+  type: FETCH_EVENT_SCHEDULES_SUCCESS as typeof FETCH_EVENT_SCHEDULES_SUCCESS,
   payload: {
     data
   }
 })
 
-export const fetchSchedule = (event_id, id) => ({
-  type: FETCH_EVENT_SCHEDULE,
+export const fetchSchedule = (event_id: number, id: number) => ({
+  type: FETCH_EVENT_SCHEDULE as typeof FETCH_EVENT_SCHEDULE,
   payload: {
     data: {
       event_id,
@@ -86,23 +102,45 @@ export const fetchSchedule = (event_id, id) => ({
   }
 })
 
-export const fetchEventScheduleSuccess = data => ({
-  type: FETCH_EVENT_SCHEDULE_SUCCESS,
+export const fetchEventScheduleSuccess = (data: EventSchedule) => ({
+  type: FETCH_EVENT_SCHEDULE_SUCCESS as typeof FETCH_EVENT_SCHEDULE_SUCCESS,
   payload: {
     data
   }
 })
 
-const initialState = {
+type EventScheduleActions =
+  | ReturnType<typeof createEventSchedule>
+  | ReturnType<typeof createEventScheduleSuccess>
+  | ReturnType<typeof updateEventSchedule>
+  | ReturnType<typeof updateEventScheduleSuccess>
+  | ReturnType<typeof deleteEventSchedule>
+  | ReturnType<typeof deleteEventScheduleSuccess>
+  | ReturnType<typeof currentEventSchedule>
+  | ReturnType<typeof fetchEventSchedules>
+  | ReturnType<typeof fetchEventSchedulesSuccess>
+  | ReturnType<typeof fetchSchedule>
+  | ReturnType<typeof fetchEventScheduleSuccess>
+
+interface EventScheduleState {
+  event_schedules: Array<EventSchedule>
+  current_event_schedule: EventSchedule
+}
+
+const initialState: EventScheduleState = {
   event_schedules: [],
   current_event_schedule: {
+    id: 1,
     started_at: new Date(),
     ended_at: new Date(),
     address: ''
   }
 }
 
-export default function eventScheduleReducer(state = initialState, action) {
+export default function eventScheduleReducer(
+  state = initialState,
+  action: EventScheduleActions
+) {
   switch (action.type) {
     case CURRENT_EVENT_SCHEDULE:
       return { ...state, current_event_schedule: { ...action.payload.data } }

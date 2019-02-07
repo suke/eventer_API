@@ -11,6 +11,6 @@
 #
 
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :company_id, :site_url, :created_at, :updated_at
+  attributes :id, :name, :company_id, :site_url
   has_many :categories, serializer: CategorySerializer
 end

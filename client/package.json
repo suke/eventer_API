@@ -45,12 +45,13 @@
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^3.6.0",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.3.1",
+    "typescript": "^3.1.6",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "@types/history": "^4.7.2",
     "axios": "^0.18.0",
     "dayjs": "^1.8.4",
     "formik": "^1.4.3",

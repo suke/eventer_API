@@ -6,21 +6,31 @@ import { createOptions } from '../../util'
 
 class EventCreate extends React.Component<any> {
   componentDidMount() {
-    const { fetchCompanies } = this.props
+    const { fetchCategories, fetchCompanies } = this.props
+    fetchCategories()
     fetchCompanies()
   }
 
   render() {
-    const { companies, handleSubmit, history } = this.props
+    const { categories, companies, handleSubmit, history } = this.props
     const options = createOptions(companies, 'id', 'name')
+    const categoryOptions = createOptions(categories, 'id', 'name')
+
     return (
       <Wrapper>
         <H2>イベント作成</H2>
         <EventForm
           history={history}
           options={options}
+          categoryOptions={categoryOptions}
           handleSubmit={handleSubmit}
-          initialValues={{ id: '', name: '', company_id: '', site_url: '' }}
+          initialValues={{
+            id: '',
+            name: '',
+            company_id: '',
+            site_url: '',
+            categories: []
+          }}
         />
       </Wrapper>
     )

@@ -22,12 +22,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      { test: /\.ts|tsx?$/, loader: 'ts-loader' },
-      {
-        test: /\.js$/,
-        use: ['source-map-loader'],
-        enforce: 'pre'
-      },
+      { test: /\.ts|tsx?$/, loader: 'awesome-typescript-loader' },
       {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader?modules']

@@ -1,11 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Formik, Field } from 'formik'
-import { InputFieldV2, SelectFieldV2 } from '../form/field'
+import { Formik, Field, FieldArray } from 'formik'
+import { InputFieldV2, SelectFieldV2, CategoryField } from '../form/field'
 import { SubmitButton } from '../button'
 
 export const EventForm = ({
   options,
+  categoryOptions,
   history,
   handleSubmit,
   initialValues
@@ -19,7 +20,7 @@ export const EventForm = ({
           setSubmitting(true)
           handleSubmit(values, history)
         }}
-        render={({ errors, touched, handleSubmit, isSubmitting }) => (
+        render={({ values, errors, touched, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit}>
             <Field
               label="Name"
@@ -39,6 +40,16 @@ export const EventForm = ({
               name="site_url"
               placeholder="site_url"
               component={InputFieldV2}
+            />
+            <FieldArray
+              name="categories"
+              render={arrayHelpers => (
+                <CategoryField
+                  categoryOptions={categoryOptions}
+                  values={values}
+                  arrayHelpers={arrayHelpers}
+                />
+              )}
             />
             <StyledSubmitButton type="submit" disabled={isSubmitting}>
               Submit

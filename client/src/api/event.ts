@@ -5,6 +5,7 @@ interface eventParams {
   name: string
   company_id: number
   site_url: string
+  categories?: Array<number>
 }
 
 interface eventScheduleParams {
@@ -15,21 +16,34 @@ interface eventScheduleParams {
   address: string
 }
 
-export function createEvent({ name, company_id, site_url }: eventParams) {
+export function createEvent({
+  name,
+  company_id,
+  site_url,
+  categories
+}: eventParams) {
   return API.post('/events', {
     name,
     company_id,
-    site_url
+    site_url,
+    categories
   })
     .then(result => ({ result }))
     .catch(err => ({ err }))
 }
 
-export function updateEvent({ id, name, company_id, site_url }: eventParams) {
+export function updateEvent({
+  id,
+  name,
+  company_id,
+  site_url,
+  categories
+}: eventParams) {
   return API.put(`/events/${id}`, {
     name,
     company_id,
-    site_url
+    site_url,
+    categories
   })
     .then(result => ({ result }))
     .catch(err => ({ err }))

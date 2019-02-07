@@ -1,4 +1,5 @@
 import { Event, EventSchedule } from '../interfaces/event'
+import { History } from 'history'
 
 // action type
 export const CREATE_EVENT = 'CREATE_EVENT'

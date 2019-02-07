@@ -30,7 +30,8 @@ function EventEdit(props) {
         history={history}
         options={options}
         handleSubmit={handleSubmit}
-        initialValues={event}
+        initialValues={{ ...event, categories: [] }}
+        categoryOptions={categoryOptions}
       />
     </Wrapper>
   )

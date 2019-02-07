@@ -8,8 +8,8 @@ module V1
             produces: %w[application/json]
         params do
           requires :event_id, type: Integer
-          requires :started_at, type: Date
-          requires :ended_at, type: Date
+          requires :started_at, type: DateTime
+          requires :ended_at, type: DateTime
           optional :address, type: String
         end
         post serializer: EventScheduleSerializer do
@@ -33,8 +33,8 @@ module V1
           params do
             requires :id, type: Integer
             requires :event_id, type: Integer
-            requires :started_at, type: Date
-            requires :ended_at, type: Date
+            requires :started_at, type: DateTime
+            requires :ended_at, type: DateTime
             optional :address, type: String
           end
           put serializer: EventScheduleSerializer do

@@ -2,7 +2,7 @@ import * as React from 'react'
 import DatePicker from 'react-datepicker'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import 'dayjs/locale/es'
+import 'dayjs/locale/ja'
 dayjs.locale('ja')
 
 export default ({ value, onChange }) => {
@@ -11,7 +11,7 @@ export default ({ value, onChange }) => {
     <StyledDatePicker
       selected={date}
       onChange={onChange}
-      dateFormat="YYYY/MM/dd hh:mm"
+      dateFormat="YYYY/MM/dd HH:mm"
       showTimeSelect
       timeIntervals={10}
       timeCaption="time"

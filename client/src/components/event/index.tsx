@@ -1,10 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
-import moment from 'moment'
 import Wrapper from '../main_wrapper'
 import { EditButton, CreateButton } from '../button'
 import Link from '../edit_button_link'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ja'
+dayjs.locale('ja')
 
 class Event extends React.Component<any> {
   componentDidMount() {
@@ -49,13 +51,13 @@ const EventPresenter = ({ event, schedules }) => {
               Header: 'Started_at',
               id: 'started_at',
               accessor: schedule =>
-                moment(schedule.started_at).format('YYYY-MM-DD h:mm:ss')
+                dayjs(schedule.started_at).format('YYYY-MM-DD HH:mm')
             },
             {
               Header: 'Ended_at',
               id: 'ended_at',
               accessor: schedule =>
-                moment(schedule.ended_at).format('YYYY-MM-DD h:mm:ss')
+                dayjs(schedule.ended_at).format('YYYY-MM-DD HH:mm')
             },
             {
               Header: 'Address',

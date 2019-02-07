@@ -28,7 +28,6 @@ function EventEdit(props) {
     event.categories && 1 <= event.categories.length
       ? event.categories.map(c => c.id)
       : []
-  console.log(event)
   return (
     <Wrapper>
       <EventForm

@@ -42,13 +42,19 @@ export const DatePickerFieldV2 = ({ field, label, handleChange, ...props }) => (
 )
 
 export const CategoryField = ({ values, arrayHelpers, categoryOptions }) => {
-  const [currentCategory, setcategory] = React.useState(null)
+  const [currentCategory, setCategory] = React.useState(0)
   const categories = parseCategory(values.categories, categoryOptions)
   return (
     <FormContainer>
       <Label>Categories</Label>
       <div>
-        <Select width="200px" onChange={e => setcategory(e.target.value)}>
+        <Select
+          width="200px"
+          onChange={e => {
+            const val = +e.target.value
+            setCategory(val)
+          }}
+        >
           <option value="">Select a category ...</option>
           {categoryOptions.map(option => (
             <option value={option.value} key={option.value}>
@@ -162,7 +168,7 @@ const Input = styled.input`
 `
 
 function parseCategory(categories, categoryOptions) {
-  if (categories.length < 1) {
+  if (categories.length < 1 || categoryOptions.length < 1) {
     return []
   }
 

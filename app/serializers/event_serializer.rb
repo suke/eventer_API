@@ -13,4 +13,10 @@
 class EventSerializer < ActiveModel::Serializer
   attributes :id, :name, :company_id, :site_url
   has_many :categories, serializer: CategorySerializer
+
+  def site_url
+    return '' if object.site_url.nil?
+
+    object.site_url
+  end
 end

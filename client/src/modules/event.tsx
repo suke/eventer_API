@@ -132,7 +132,8 @@ const initialState: EventState = {
     id: 1,
     name: '',
     company_id: 1,
-    site_url: ''
+    site_url: '',
+    categories: []
   },
   schedules: []
 }

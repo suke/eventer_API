@@ -24,13 +24,21 @@ function EventEdit(props) {
   const { event, companies, categories, handleSubmit, history } = props
   const options = createOptions(companies, 'id', 'name')
   const categoryOptions = createOptions(categories, 'id', 'name')
+  const initialCategories =
+    event.categories && 1 <= event.categories.length
+      ? event.categories.map(c => c.id)
+      : []
+  console.log(event)
   return (
     <Wrapper>
       <EventForm
         history={history}
         options={options}
         handleSubmit={handleSubmit}
-        initialValues={{ ...event, categories: [] }}
+        initialValues={{
+          ...event,
+          categories: initialCategories
+        }}
         categoryOptions={categoryOptions}
       />
     </Wrapper>

@@ -1,3 +1,6 @@
+import { Company } from '../interfaces/company';
+import { History } from 'history';
+
 // action type
 export const CREATE_COMPANY = 'CREATE_COMPANY'
 export const CREATE_COMPANY_SUCCESS = 'CREATE_COMPANY_SUCCESS'
@@ -18,81 +21,99 @@ export const CURRENT_COMPANY = 'CURRENT_COMPANY'
 export const FETCH_COMPANIES_AND_SELECT_CURRENT_COMPANY =
   'FETCH_COMPANIES_AND_SELECT_CURRENT_COMPANY'
 // action creators
-export const createCompany = ({ data, history }) => ({
-  type: CREATE_COMPANY,
+export const createCompany = ({ data, history }: {data: Company, history: History}) => ({
+  type: CREATE_COMPANY as typeof CREATE_COMPANY,
   payload: {
     data,
     history
   }
 })
 
-export const createCompanySuccess = data => ({
-  type: CREATE_COMPANY_SUCCESS,
+export const createCompanySuccess = (data: Company) => ({
+  type: CREATE_COMPANY_SUCCESS as typeof CREATE_COMPANY_SUCCESS,
   payload: {
     data
   }
 })
 
-export const updateCompany = ({ data, history }) => ({
-  type: UPDATE_COMPANY,
+export const updateCompany = ({ data, history }: {data: Company, history: History}) => ({
+  type: UPDATE_COMPANY as typeof UPDATE_COMPANY,
   payload: {
     data,
     history
   }
 })
 
-export const updateCompanySuccess = data => ({
-  type: UPDATE_COMPANY_SUCCESS,
+export const updateCompanySuccess = (data: Company) => ({
+  type: UPDATE_COMPANY_SUCCESS as typeof UPDATE_COMPANY_SUCCESS,
   payload: {
     data
   }
 })
 
 export const fetchCompanies = () => ({
-  type: FETCH_COMPANIES
+  type: FETCH_COMPANIES as typeof FETCH_COMPANIES
 })
 
-export const fetchCompaniesSuccess = data => ({
-  type: FETCH_COMPANIES_SUCCESS,
+export const fetchCompaniesSuccess = (data: Array<Company>) => ({
+  type: FETCH_COMPANIES_SUCCESS as typeof FETCH_COMPANIES_SUCCESS,
   payload: {
     data
   }
 })
 
-export const fetchCompaniesAndSelectCurrentCompany = id => ({
-  type: FETCH_COMPANIES_AND_SELECT_CURRENT_COMPANY,
+export const fetchCompaniesAndSelectCurrentCompany = (id: number) => ({
+  type: FETCH_COMPANIES_AND_SELECT_CURRENT_COMPANY as typeof FETCH_COMPANIES_AND_SELECT_CURRENT_COMPANY,
   payload: {
     id
   }
 })
 
-export const deleteCompany = id => ({
-  type: DELETE_COMPANY,
+export const deleteCompany = (id: number) => ({
+  type: DELETE_COMPANY as typeof DELETE_COMPANY,
   payload: {
     id
   }
 })
 
-export const deleteCompanySuccess = data => ({
-  type: DELETE_COMPANY_SUCCESS,
+export const deleteCompanySuccess = (data: Company) => ({
+  type: DELETE_COMPANY_SUCCESS as typeof DELETE_COMPANY_SUCCESS,
   payload: {
     data
   }
 })
 
-export const currentCompany = data => ({
-  type: CURRENT_COMPANY,
+export const currentCompany = (data: Company) => ({
+  type: CURRENT_COMPANY as typeof CURRENT_COMPANY,
   payload: {
     data
   }
 })
 
-const initialState = {
-  currentCompany: {},
+type CompanyActions =
+  | ReturnType<typeof createCompany>
+  | ReturnType<typeof createCompanySuccess>
+  | ReturnType<typeof updateCompany>
+  | ReturnType<typeof updateCompanySuccess>
+  | ReturnType<typeof fetchCompanies>
+  | ReturnType<typeof fetchCompaniesSuccess>
+  | ReturnType<typeof fetchCompaniesAndSelectCurrentCompany>
+  | ReturnType<typeof deleteCompany>
+  | ReturnType<typeof deleteCompanySuccess>
+  | ReturnType<typeof currentCompany>
+
+interface CompanyState {
+  currentCompany: Company
+  companies: Array<Company>
+}
+
+
+const initialState: CompanyState = {
+  currentCompany: { id: 1, name: '' },
   companies: []
 }
 
-export default function companyReducer(state = initialState, action) {
+export default function companyReducer(state = initialState, action: CompanyActions) {
   switch (action.type) {
     case CURRENT_COMPANY:
       return { ...state, currentCompany: { ...action.payload.data } }

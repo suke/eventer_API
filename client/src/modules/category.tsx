@@ -121,7 +121,7 @@ interface CategoryState {
 }
 
 const initialState: CategoryState = {
-  currentCategory: { id: null, name: '' },
+  currentCategory: { id: 1, name: '' },
   categories: []
 }
 

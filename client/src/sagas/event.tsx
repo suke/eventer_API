@@ -50,7 +50,7 @@ function* deleteEvent(action) {
   }
 }
 
-function* fetchEvents(action) {
+function* fetchEvents() {
   const { result, err } = yield call(API.event.fetchEvents)
   if (result && !err) {
     yield put(fetchEventsSuccess(result.data))

@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { createCompany } from '../../modules/company'
 import CompanyCreate from '../../components/company/create'
 
-const mapStateToProps = state => {
+const mapStateToProps = () => {
   return {}
 }
 

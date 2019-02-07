@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { createEventSchedule } from '../../modules/event_schedule'
 import EventScheduleCreate from '../../components/event_schedule/create'
 
-const mapStateToProps = state => {
+const mapStateToProps = () => {
   return {}
 }
 

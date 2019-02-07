@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { createCategory } from '../../modules/category'
 import CategoryCreate from '../../components/category/create'
 
-const mapStateToProps = state => {
+const mapStateToProps = () => {
   return {}
 }
 

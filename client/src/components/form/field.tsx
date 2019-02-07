@@ -59,7 +59,6 @@ export const InputFieldV2 = ({
 
 export const SelectFieldV2 = ({
   field,
-  form: { touched, errors },
   label,
   options,
   ...props
@@ -82,7 +81,6 @@ export const SelectFieldV2 = ({
 
 export const DatePickerFieldV2 = ({
   field,
-  form: { touched, errors },
   label,
   handleChange,
   ...props

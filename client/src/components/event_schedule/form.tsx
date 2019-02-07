@@ -20,7 +20,6 @@ export const ScheduleForm = ({ history, handleSubmit, initialValues }) => {
           handleSubmit,
           setFieldValue,
           isSubmitting,
-          ...props
         }) => (
           <form onSubmit={handleSubmit}>
             <Field

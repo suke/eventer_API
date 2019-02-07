@@ -103,7 +103,7 @@ export const currentCategory = (data: Category) => ({
   }
 })
 
-type Actions =
+type CategoryActions =
   | ReturnType<typeof createCategory>
   | ReturnType<typeof createCategorySuccess>
   | ReturnType<typeof updateCategory>
@@ -125,7 +125,10 @@ const initialState: CategoryState = {
   categories: []
 }
 
-export default function categoryReducer(state = initialState, action: Actions) {
+export default function categoryReducer(
+  state = initialState,
+  action: CategoryActions
+) {
   switch (action.type) {
     case CURRENT_CATEGORY:
       return { ...state, currentCategory: { ...action.payload.data } }

@@ -11,16 +11,26 @@ describe V1::EventSchedules do
   end
 
   describe 'POST /api/v1/event/schedules' do
-    subject { post '/api/v1/event/schedules', params: { event_id: event[:id], started_at: '2018/12/01 00:00:00', ended_at: '2018/12/01 15:00:00' } }
+    let(:params) { { event_id: event[:id], started_at: '2018/12/01 00:00:00', ended_at: '2018/12/01 15:00:00' } }
+    subject { post '/api/v1/event/schedules', params: params }
     it 'returns success' do
       subject
       expect(response).to be_successful
     end
     context 'params empty' do
+      let(:params) { {} }
       subject { post '/api/v1/event/schedules', params: {} }
       it 'return 400' do
         subject
         expect(response.status).to eq(400)
+      end
+    end
+
+    context 'hoge' do
+      let(:params) { { event_id: event[:id], started_at: '2018/12/01 00:00:00', ended_at: '2018/12/01 15:00:00', zip_code: 1111111 } }
+      it 'returns success' do
+        subject
+        expect(response).to be_successful
       end
     end
   end

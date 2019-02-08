@@ -134,6 +134,7 @@ const initialState: EventScheduleState = {
     id: 1,
     started_at: new Date(),
     ended_at: new Date(),
+    venue: '',
     address: ''
   }
 }

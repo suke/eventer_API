@@ -12,6 +12,6 @@
 #
 
 class EventScheduleSerializer < ActiveModel::Serializer
-  attributes :id, :event_id, :started_at, :ended_at, :address
+  attributes :id, :event_id, :started_at, :ended_at, :venue, :zip_code, :address
   # belongs_to :event
 end

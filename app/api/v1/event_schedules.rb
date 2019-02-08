@@ -10,6 +10,8 @@ module V1
           requires :event_id, type: Integer
           requires :started_at, type: DateTime
           requires :ended_at, type: DateTime
+          optional :venue, type: String
+          optional :zip_code, type: String
           optional :address, type: String
         end
         post serializer: EventScheduleSerializer do
@@ -35,6 +37,8 @@ module V1
             requires :event_id, type: Integer
             requires :started_at, type: DateTime
             requires :ended_at, type: DateTime
+            optional :venue, type: String
+            optional :zip_code, type: String
             optional :address, type: String
           end
           put serializer: EventScheduleSerializer do
@@ -43,7 +47,7 @@ module V1
             event_schedule.update!(declared_params)
             event_schedule
           end
-          
+
           desc 'delete event schedule'
           delete do
             id = params[:id].to_i

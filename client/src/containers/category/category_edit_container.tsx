@@ -5,7 +5,8 @@ import {
 } from '../../modules/category'
 import CategoryEdit from '../../components/category/edit'
 
-const mapStateToProps = ({ categoryReducer }) => {
+const mapStateToProps = ({ categoryReducer }, ownProps) => {
+  console.log(ownProps)
   return {
     currentCategory: categoryReducer.currentCategory,
   }

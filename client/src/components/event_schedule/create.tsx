@@ -18,6 +18,8 @@ class EventScheduleCreate extends React.Component<any> {
             event_id: event_id,
             started_at: '',
             ended_at: '',
+            venue: '',
+            zip_code: '',
             address: ''
           }}
         />

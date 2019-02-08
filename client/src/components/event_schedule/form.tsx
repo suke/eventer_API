@@ -40,6 +40,18 @@ export const ScheduleForm = ({ history, handleSubmit, initialValues }) => {
                 setFieldValue('ended_at', date, false)
               }}
             />
+             <Field
+              label="開催地"
+              name="venue"
+              placeholder="開催地"
+              component={InputFieldV2}
+            />
+            <Field
+              label="郵便番号"
+              name="zip_code"
+              placeholder="0010000"
+              component={InputFieldV2}
+            />
             <Field
               label="住所"
               name="address"

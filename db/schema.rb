@@ -16,12 +16,14 @@ ActiveRecord::Schema.define(version: 2019_02_08_022019) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_companies_on_name", unique: true
   end
 
   create_table "event_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_02_08_022019) do
     t.datetime "updated_at", null: false
     t.string "site_url"
     t.index ["company_id"], name: "fk_rails_88786fdf2d"
+    t.index ["name"], name: "index_events_on_name", unique: true
   end
 
   add_foreign_key "events", "companies"

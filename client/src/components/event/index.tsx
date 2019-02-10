@@ -58,6 +58,15 @@ const EventPresenter = ({ event, schedules }) => {
                 dayjs(schedule.ended_at).format('YYYY-MM-DD HH:mm')
             },
             {
+              Header: 'Venue',
+              accessor: 'venue'
+            },
+            {
+              Header: 'ZipCode',
+              accessor: 'zip_code'
+            },
+
+            {
               Header: 'Address',
               accessor: 'address'
             },

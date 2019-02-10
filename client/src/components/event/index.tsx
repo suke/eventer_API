@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useOnMount } from '../../custom_fooks/index'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
 import Wrapper from '../main_wrapper'
@@ -8,23 +9,20 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ja'
 dayjs.locale('ja')
 
-class Event extends React.Component<any> {
-  componentDidMount() {
-    const { match, fetchEventAndSchedule } = this.props
+function Event(props) {
+  useOnMount(props, ({ match, fetchEventAndSchedule }) => {
     fetchEventAndSchedule(match.params.id)
-  }
+  })
 
-  render() {
-    const { events, match, schedules } = this.props
-    const event = events.find(event => {
-      return event.id === parseInt(match.params.id)
-    })
-    return (
-      <Wrapper>
-        <EventPresenter event={event} schedules={schedules} />
-      </Wrapper>
-    )
-  }
+  const { events, match, schedules } = props
+  const event = events.find(event => {
+    return event.id === parseInt(match.params.id)
+  })
+  return (
+    <Wrapper>
+      <EventPresenter event={event} schedules={schedules} />
+    </Wrapper>
+  )
 }
 
 const EventPresenter = ({ event, schedules }) => {

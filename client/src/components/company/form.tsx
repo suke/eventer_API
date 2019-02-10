@@ -4,7 +4,7 @@ import { Formik, Field } from 'formik'
 import { InputFieldV2 } from '../form/field'
 import { SubmitButton } from '../button'
 
-export const CompanyForm = ({ history, handleSubmit, initialValues }) => {
+const CompanyForm = ({ history, handleSubmit, initialValues }) => {
   return (
     <Wrapper>
       <Formik

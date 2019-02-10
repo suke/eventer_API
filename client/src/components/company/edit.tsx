@@ -1,25 +1,22 @@
 import * as React from 'react'
-import { CompanyForm } from './form'
+import { useOnMount } from '../../custom_fooks/index'
+import CompanyForm from './form'
 import Wrapper from '../main_wrapper'
 
-class CompanyEdit extends React.Component<any> {
-  componentDidMount() {
-    const { fetchCompaniesAndSelectCurrentCompany, match } = this.props
+function CompanyEdit(props) {
+  useOnMount(props, ({ fetchCompaniesAndSelectCurrentCompany, match }) => {
     fetchCompaniesAndSelectCurrentCompany(parseInt(match.params.id, 10))
-  }
+  })
 
-  render() {
-    const { currentCompany, handleSubmit, history } = this.props
-    return (
-      <Wrapper>
-        <CompanyForm
-          history={history}
-          handleSubmit={handleSubmit}
-          initialValues={currentCompany}
-        />
-      </Wrapper>
-    )
-  }
+  const { currentCompany, handleSubmit, history } = props
+  return (
+    <Wrapper>
+      <CompanyForm
+        history={history}
+        handleSubmit={handleSubmit}
+        initialValues={currentCompany}
+      />
+    </Wrapper>
+  )
 }
-
 export default CompanyEdit

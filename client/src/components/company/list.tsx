@@ -1,71 +1,65 @@
 import * as React from 'react'
+import { useOnMount } from '../../custom_fooks/index'
 import styled from 'styled-components'
 import ReactTable from 'react-table'
 import Wrapper from '../main_wrapper'
 import { EditButton, CreateButton } from '../button'
 import ButtonLink from '../edit_button_link'
 
-class CompanyList extends React.Component<any> {
-  componentDidMount() {
-    const { fetchCompanies } = this.props
+function CompanyList(props) {
+  useOnMount(props, ({ fetchCompanies }) => {
     fetchCompanies()
-  }
+  })
 
-  render() {
-    const { companies, onClickDelete } = this.props
-    console.log(companies)
-    return (
-      <Wrapper>
-        <Header>
-          <H2>企業一覧</H2>
-          <StyledCreateButton width="60px" height="30px">
-            <ButtonLink to={`/companies/create`} height="26px" color="white">
-              Create
-            </ButtonLink>
-          </StyledCreateButton>
-        </Header>
-        <ReactTable
-          data={companies}
-          columns={[
-            {
-              Header: 'Name',
-              accessor: 'name'
-            },
-            {
-              Header: 'Edit',
-              Cell: ({ original: company }) => (
-                <EditButton width="60px" height="30px" borderColor="#666">
-                  <ButtonLink
-                    to={`/companies/${company.id}/edit`}
-                    height="26px"
-                  >
-                    Edit
-                  </ButtonLink>
+  const { companies, onClickDelete } = props
+  return (
+    <Wrapper>
+      <Header>
+        <H2>企業一覧</H2>
+        <StyledCreateButton width="60px" height="30px">
+          <ButtonLink to={`/companies/create`} height="26px" color="white">
+            Create
+          </ButtonLink>
+        </StyledCreateButton>
+      </Header>
+      <ReactTable
+        data={companies}
+        columns={[
+          {
+            Header: 'Name',
+            accessor: 'name'
+          },
+          {
+            Header: 'Edit',
+            Cell: ({ original: company }) => (
+              <EditButton width="60px" height="30px" borderColor="#666">
+                <ButtonLink to={`/companies/${company.id}/edit`} height="26px">
+                  Edit
+                </ButtonLink>
+              </EditButton>
+            )
+          },
+          {
+            Header: 'Delete',
+            Cell: ({ original: company }) => {
+              return (
+                <EditButton
+                  width="60px"
+                  height="30px"
+                  borderColor="#666"
+                  onClick={() => onClickDelete(company.id)}
+                >
+                  Delete
                 </EditButton>
               )
-            },
-            {
-              Header: 'Delete',
-              Cell: ({ original: company }) => {
-                return (
-                  <EditButton
-                    width="60px"
-                    height="30px"
-                    borderColor="#666"
-                    onClick={() => onClickDelete(company.id)}
-                  >
-                    Delete
-                  </EditButton>
-                )
-              }
             }
-          ]}
-          defaultPageSize={20}
-          className="-striped -highlight"
-        />
-      </Wrapper>
-    )
-  }
+          }
+        ]}
+        defaultPageSize={20}
+        className="-striped -highlight"
+      />
+    </Wrapper>
+  )
 }
 
 const H2 = styled.h2`

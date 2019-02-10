@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useOnMount } from '../../custom_fooks/index'
 import styled from 'styled-components'
-import { EventForm } from './form'
+import EventForm from './form'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 

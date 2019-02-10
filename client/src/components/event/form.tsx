@@ -4,7 +4,7 @@ import { Formik, Field, FieldArray } from 'formik'
 import { InputFieldV2, SelectFieldV2, CategoryField } from '../form/field'
 import { SubmitButton } from '../button'
 
-export const EventForm = ({
+const EventForm = ({
   options,
   categoryOptions,
   history,

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { EventForm } from './form'
+import EventForm from './form'
 import Wrapper from '../main_wrapper'
 import { createOptions } from '../../util'
 import { useOnMount } from '../../custom_fooks/index'
